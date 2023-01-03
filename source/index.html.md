@@ -73,7 +73,7 @@ curl "https://api.tablotv.com/assocserver/getipinfo/"
 The IP addresses for a Tablo devices on a local network can be discovered 2 ways:
 
 1. An HTTP request to [https://api.tablotv.com/assocserver/getipinfo/](https://api.tablotv.com/assocserver/getipinfo/) . This is a service hosted by Tablo - see the example to the right.
-2. A UDP broadcast request on port `8881`, listening for a response of port `8881`. Python [example #1](https://github.com/Nuvyyo/script.tablo/blob/master/lib/tablo/discovery.py#L107)[example #2](https://github.com/jessedp/tut/blob/master/tablo/discovery.py#L125), javascript/node [example #1](https://github.com/jessedp/tablo-api-js/blob/main/src/discovery.ts#L20)
+2. A UDP broadcast request on port `8881`, listening for a response on port `8882`. Python [example #1](https://github.com/Nuvyyo/script.tablo/blob/master/lib/tablo/discovery.py#L107), [example #2](https://github.com/jessedp/tut/blob/master/tablo/discovery.py#L125), javascript/node [example #1](https://github.com/jessedp/tablo-api-js/blob/main/src/discovery.ts#L20)
 
 You will only care about the **private** IP address.
 
