@@ -1552,3 +1552,62 @@ These tools are free, though their source is unavailable. To replicate actions t
 - [Tablo Ripper](https://github.com/cyclej/TabloRipper/wiki) - Windows app for ripping recordings from your device(s) (no longer under development)
 - [Tablo Exporter](https://jettsoft.com/products.html) - Java UI for exporting recordings from your device(s)
 - [APL](http://remedylegacy.com/tablo/) - Java+JFX UI for exporting recordings from your device(s)
+
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+             ___.-~"~-._   __....__
+           .'    `    \ ~"~        ``-.
+          /` _      )  `\              `\
+         /`  a)    /     |               `\
+        :`        /      |                 \
+   <`-._|`  .-.  (      /   .            `;\\          _.-~"~-.
+    `-. `--'_.'-.;\___/'   .      .       | \\       ;`a)   )  `\
+ _     /:--`     |        /     /        .'  \\     /      /    |~=-=--.
+("\   /`/        |       '     '         /    ;`'._/ ,;_  |    /        ".
+`\'\_/`/         .\     /`~`=-.:        /     ``.,__/ ` `| `"~`           \
+  `._.'          /`\    |      `\      /(            .--'   /      /      |\
+                /  /\   |        `Y   /  \          /  ____/\     |      / `"
+          jgs  J  /  Y  |         |  /`\  \        /__/  |  |`-...-\    |
+              /  |   |  |         |  |  |  |       '""   |  |      |`\  |
+             "---"  /___|        /___|  /__|             /__|     /__/__|
+                    '"""         '"""  '"""              '"""    '"""'""
+</pre>
