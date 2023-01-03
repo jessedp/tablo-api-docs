@@ -1,0 +1,1823 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the Tablo API"
+        >
+    <title>Unofficial Tablo API Docs & Info</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b12a2749.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-9a7b217a.png" class="logo" alt="" />
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#tablo-api-introduction" class="toc-h1 toc-link" data-title="Tablo API Introduction">Tablo API Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#network-options" class="toc-h1 toc-link" data-title="Network Options">Network Options</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#discovery" class="toc-h2 toc-link" data-title="Discovery">Discovery</a>
+                  </li>
+                  <li>
+                    <a href="#connectivity" class="toc-h2 toc-link" data-title="Connectivity">Connectivity</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#server" class="toc-h1 toc-link" data-title="Server">Server</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-general-server-info" class="toc-h2 toc-link" data-title="Get General Server Info">Get General Server Info</a>
+                  </li>
+                  <li>
+                    <a href="#get-server-capabilities" class="toc-h2 toc-link" data-title="Get Server Capabilities">Get Server Capabilities</a>
+                  </li>
+                  <li>
+                    <a href="#get-overall-guide-status" class="toc-h2 toc-link" data-title="Get Overall Guide Status">Get Overall Guide Status</a>
+                  </li>
+                  <li>
+                    <a href="#get-status-of-the-server-39-s-update-progress" class="toc-h2 toc-link" data-title="Get Status of the Server's update progress">Get Status of the Server's update progress</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-hard-drives" class="toc-h2 toc-link" data-title="Get All Hard drives">Get All Hard drives</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#settings" class="toc-h1 toc-link" data-title="Settings">Settings</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-general-settings" class="toc-h2 toc-link" data-title="Get General Settings">Get General Settings</a>
+                  </li>
+                  <li>
+                    <a href="#get-recording-quality-options" class="toc-h2 toc-link" data-title="Get Recording Quality Options">Get Recording Quality Options</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-recording-quality-info" class="toc-h2 toc-link" data-title="Get Specific Recording Quality info">Get Specific Recording Quality info</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#guide" class="toc-h1 toc-link" data-title="Guide">Guide</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-airings" class="toc-h2 toc-link" data-title="Get Airings">Get Airings</a>
+                  </li>
+                  <li>
+                    <a href="#get-shows" class="toc-h2 toc-link" data-title="Get Shows">Get Shows</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-channels" class="toc-h2 toc-link" data-title="Get All Channels">Get All Channels</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-channel" class="toc-h2 toc-link" data-title="Get Specific Channel">Get Specific Channel</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-movies" class="toc-h2 toc-link" data-title="Get All Movies">Get All Movies</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-movie" class="toc-h2 toc-link" data-title="Get Specific Movie">Get Specific Movie</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-series" class="toc-h2 toc-link" data-title="Get All Series">Get All Series</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-series" class="toc-h2 toc-link" data-title="Get Specific Series">Get Specific Series</a>
+                  </li>
+                  <li>
+                    <a href="#get-active-series-episode" class="toc-h2 toc-link" data-title="Get Active Series Episode">Get Active Series Episode</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-sports" class="toc-h2 toc-link" data-title="Get All Sports">Get All Sports</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-sport" class="toc-h2 toc-link" data-title="Get Specific Sport">Get Specific Sport</a>
+                  </li>
+                  <li>
+                    <a href="#get-active-sport-event" class="toc-h2 toc-link" data-title="Get Active Sport Event">Get Active Sport Event</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#recordings" class="toc-h1 toc-link" data-title="Recordings">Recordings</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-airings-2" class="toc-h2 toc-link" data-title="Get Airings">Get Airings</a>
+                  </li>
+                  <li>
+                    <a href="#get-shows-2" class="toc-h2 toc-link" data-title="Get Shows">Get Shows</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-channels-2" class="toc-h2 toc-link" data-title="Get All Channels">Get All Channels</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-channel-2" class="toc-h2 toc-link" data-title="Get Specific Channel">Get Specific Channel</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-movies-2" class="toc-h2 toc-link" data-title="Get All Movies">Get All Movies</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-movie-2" class="toc-h2 toc-link" data-title="Get Specific Movie">Get Specific Movie</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-series-2" class="toc-h2 toc-link" data-title="Get All Series">Get All Series</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-series-2" class="toc-h2 toc-link" data-title="Get Specific Series">Get Specific Series</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-series-episode" class="toc-h2 toc-link" data-title="Get Specific Series Episode">Get Specific Series Episode</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-sports-2" class="toc-h2 toc-link" data-title="Get All Sports">Get All Sports</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-sport-2" class="toc-h2 toc-link" data-title="Get Specific Sport">Get Specific Sport</a>
+                  </li>
+                  <li>
+                    <a href="#get-specific-sport-event" class="toc-h2 toc-link" data-title="Get Specific Sport Event">Get Specific Sport Event</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#modifying-recordings" class="toc-h1 toc-link" data-title="Modifying Recordings">Modifying Recordings</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#patch" class="toc-h2 toc-link" data-title="Patch">Patch</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#batch-submissions" class="toc-h1 toc-link" data-title="Batch Submissions">Batch Submissions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#batch" class="toc-h2 toc-link" data-title="Batch">Batch</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#watching" class="toc-h1 toc-link" data-title="Watching">Watching</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#watch" class="toc-h2 toc-link" data-title="Watch">Watch</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#3rd-party-tools" class="toc-h1 toc-link" data-title="3rd Party Tools">3rd Party Tools</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://community.tablotv.com/c/tablo-apps/third-party-apps-plex/17' target="_new">Tablo 3rd Party Community Forum</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='tablo-api-introduction'>Tablo API Introduction</h1>
+<p>This is <strong>UNOFFICIAL</strong> and not endorsed by Tablo or Nuvyyo.</p>
+
+<p>This contains a hodge podge of information gathered while working with the API for <a href="https://www.tablotv.com/">Tablo</a> devices by Nuvyyo. Technically an NDA can be signed with them for acccess to real documentation and maybe more.</p>
+
+<p>Tablo offers both <a href="https://www.tablotv.com/tablo-dvrs-how-they-work/"><strong>Network Connected</strong></a> and <a href="https://www.tablotv.com/tablo-tv-connected-dvrs-how-they-work/"><strong>TV Connected</strong></a> devices.</p>
+
+<p><strong>ONLY Network Connected</strong> devices are supposed to work with the API.</p>
+<h1 id='authentication'>Authentication</h1>
+<p>There is no Authentication or Authorization required for the publicly availale API.</p>
+
+<p>There <em>is</em> a private API used by the Tablo Connect web app (and possible other official clients) that uses <a href="https://www.meteor.com/">Meteor</a>, but access to the channels, etc in use are not publicly accessible.</p>
+<h1 id='network-options'>Network Options</h1><h2 id='discovery'>Discovery</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.tablotv.com/assocserver/getipinfo/"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cpes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"serverid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SID_5087B901A089"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"duo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DenTablo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"board"</span><span class="p">:</span><span class="w"> </span><span class="s2">"duo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"server_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.42rc2225809"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"public_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.200.100.50"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"private_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.242"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"http"</span><span class="p">:</span><span class="w"> </span><span class="mi">21020</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ssl"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"slip"</span><span class="p">:</span><span class="w"> </span><span class="mi">21021</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"roku"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_seen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-02 15:53:41.941603+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-02 15:53:41.942854+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"inserted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-23 02:50:04.988414+00:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The IP addresses for a Tablo devices on a local network can be discovered 2 ways:</p>
+
+<ol>
+<li>An HTTP request to <a href="https://api.tablotv.com/assocserver/getipinfo/">https://api.tablotv.com/assocserver/getipinfo/</a> . This is a service hosted by Tablo - see the example to the right.</li>
+<li>A UDP broadcast request on port <code>8881</code>, listening for a response of port <code>8881</code>. Python <a href="https://github.com/Nuvyyo/script.tablo/blob/master/lib/tablo/discovery.py#L107">example #1</a><a href="https://github.com/jessedp/tut/blob/master/tablo/discovery.py#L125">example #2</a>, javascript/node <a href="https://github.com/jessedp/tablo-api-js/blob/main/src/discovery.ts#L20">example #1</a></li>
+</ol>
+
+<p>You will only care about the <strong>private</strong> IP address.</p>
+<h2 id='connectivity'>Connectivity</h2>
+<p>A Tablo network device will expose several ports on the discovered IP for varying uses:</p>
+
+<table><thead>
+<tr>
+<th>Port</th>
+<th>Can Be Used</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>80</td>
+<td><strong>Yes</strong></td>
+<td>HTTP server for streaming (via <code>/watch</code>)</td>
+</tr>
+<tr>
+<td>8885</td>
+<td><strong>Yes</strong></td>
+<td>Standard HTTP RESTful server - this is used for most things</td>
+</tr>
+<tr>
+<td>8887</td>
+<td><em>No</em></td>
+<td>HTTP Server External Ports forwarded to</td>
+</tr>
+<tr>
+<td>18080</td>
+<td><strong>Yes</strong></td>
+<td>HTTP server with Indexes on / Psudeo-FTP server - provides direct, read-only access to part of hard drive and interal server files (eg, <code>/pvr/</code> path)</td>
+</tr>
+</tbody></table>
+<h1 id='server'>Server</h1>
+<p>Methods to obatin basic information about the server</p>
+<h2 id='get-general-server-info'>Get General Server Info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/server/info"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"server_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SID_5087B901A089"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DenTablo"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.42"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"local_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.242"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"setup_completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"build_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2225809</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"wifi"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tuners"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"duo"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tablo DUAL 64GB"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"availability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ready"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cache_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4d3b41b1-a912-5555-6666-9876543210"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tablo"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/server/info</code></p>
+<h2 id='get-server-capabilities'>Get Server Capabilities</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/server/capabilities"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"guide_recording_refs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recordings_keep"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recording_options"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"xSwup"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"search"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subscription_services"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ac3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"manual_programs_edit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"airings_by_day"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"movie_ratings"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"live_quality"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"genres"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"conflicts"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cp"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"snap_grid"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"params"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"scan_stop"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sap"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This returns information about all hard drives connectded to the Tablo.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/server/capabilities</code></p>
+<h2 id='get-overall-guide-status'>Get Overall Guide Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/server/guide/status"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"guide_seeded"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-02T09:27:02Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-15T08:32Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"download_progress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/server/guide/status</code></p>
+<h2 id='get-status-of-the-server-39-s-update-progress'>Get Status of the Server&#39;s update progress</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/server/update/info"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"available_update"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_checked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-01T19:15:40Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_update"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"downloading"</span><span class="p">,</span><span class="w"> </span><span class="s2">"installing"</span><span class="p">,</span><span class="w"> </span><span class="s2">"rebooting"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"current_step"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>If in progress, retrieve information about the status on any ongoing server updates.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/server/update/info</code></p>
+<h2 id='get-all-hard-drives'>Get All Hard drives</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/server/harddrives"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"format_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authorized"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WD Elements 25A2 1019 (1000 GB)"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"busy_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ready"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"external"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">984340578304</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size_mib"</span><span class="p">:</span><span class="w"> </span><span class="mi">938740</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">927380713472</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"usage_mib"</span><span class="p">:</span><span class="w"> </span><span class="mi">884419</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"free"</span><span class="p">:</span><span class="w"> </span><span class="mi">56959864832</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"free_mib"</span><span class="p">:</span><span class="w"> </span><span class="mi">54321</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">984340578304</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"limit_mib"</span><span class="p">:</span><span class="w"> </span><span class="mi">938740</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This returns information about all hard drives connectded to the Tablo.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/server/harddrives</code></p>
+<h1 id='settings'>Settings</h1>
+<p>Methods to gather information about some basic server setttings</p>
+<h2 id='get-general-settings'>Get General Settings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/settings/info"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"led"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recording_quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/settings/recording_qualities/10"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"extend_live_recordings"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"auto_delete_recordings"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"exclude_duplicates"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fast_live_startup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"audio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aac"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"commercial_skip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"livetv_quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/settings/recording_qualities/10"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data_collection"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"preferred_audio_track"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This returns the general settings for the device</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/settings/info</code></p>
+<h2 id='get-recording-quality-options'>Get Recording Quality Options</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/settings/recording_qualities"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/settings/recording_qualities/10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/settings/recording_qualities/8"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/settings/recording_qualities/5"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/settings/recording_qualities/3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/settings/recording_qualities/2"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This returns the recording quality options supported by the device.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/settings/recording_qualities</code></p>
+<h2 id='get-specific-recording-quality-info'>Get Specific Recording Quality info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/settings/recording_qualities/10"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/settings/recording_qualities/10"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HD 1080 – 10 Mbps, 720@60fps"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recommended"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"hourly_mb"</span><span class="p">:</span><span class="w"> </span><span class="mi">4615</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This returns details on a specific recording quality option for the device.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/settings/recording_qualities/&lt;NUM&gt;</code></p>
+
+<p>The <strong>number</strong> at the end of each entry can be passed to <a href="#get-specific-recording-quality-info">Get a Specific Recording Quality Setting</a>. Also note that each entry here is also a <strong>path</strong> that can simply be appended to your <code>http://server:8885/</code> address.</p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NUM</td>
+<td>The number of the recording quality info to return. Known: <strong>2</strong>, <strong>3</strong>, <strong>5</strong>, <strong>8</strong>, <strong>10</strong>. See also <a href="#get-recording-quality-options">Recording Quality Settings</a></td>
+</tr>
+</tbody></table>
+<h1 id='guide'>Guide</h1>
+<p>Methods to interact with the Guide. These would typically be used either if trying to replicate parts of the current Guide display or possibly during scheduling.</p>
+<h2 id='get-airings'>Get Airings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/airings"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/guide/series/episodes/2271819"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/movies/airings/2267295"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/sports/events/2265867"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/series/episodes/2267392"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a <code>path</code> to every Airing avaiable - for additional information, load the <code>path</code> or a set may be <strong>POST</strong>ed to <a href="#batch-submissions">/batch</a>.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/airings</code></p>
+<h2 id='get-shows'>Get Shows</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/shows"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/guide/series/2100779"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/series/631734"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/programs/974119"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/movies/2266038"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/sports/2274202"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/series/2252673"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a <code>path</code> to ANY shows matching the query parameters that the Guide currently has available to it. For more information, each <code>path</code> must be <strong>POST</strong>ed to <a href="#batch-submissions">/batch</a>.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/shows</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>qualifier</td>
+<td>A <em>qualifier</em> to limit the items returned. Known: <strong>premiering</strong>, <strong>new</strong></td>
+</tr>
+</tbody></table>
+
+<p>The <strong>qualifier</strong> parameter only limits the list returned - there is no change in the output data shape.</p>
+
+<p><code>
+curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=new&quot;
+</code> - 226+ airings? not sure what these are</p>
+
+<p><code>
+curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
+</code> - seems to be 25 airings... about to be aired? be aired for the first time?</p>
+<h2 id='get-all-channels'>Get All Channels</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/channels"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/guide/channels/612675"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/channels/982743"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/channels/975971"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/channels/612660"</span><span class="p">,</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This will return <code>paths</code> for all <code>channels</code> registerered on the device. The example is truncated on purpose.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/channels</code></p>
+<h2 id='get-specific-channel'>Get Specific Channel</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/channels/982743"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">982743</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/channels/982743"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"call_sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAGA-HD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"call_sign_src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAGA-HD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"major"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOX"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hd_720"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tms_station_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20430"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tms_affiliate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10212"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ota"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return all data for the channel <code>path</code> requested.</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/channels/&lt;object_id&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>object_id</strong></td>
+<td>The <strong>object_id</strong> of the Channel</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-movies'>Get All Movies</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/movies"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/guide/movies/2267291"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/movies/2274033"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/movies/2273923"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/movies/2271908"</span><span class="p">,</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This will return <code>paths</code> for all <code>movies</code> registerered on the device. The example is truncated on purpose.</p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/movies</code></p>
+<h2 id='get-specific-movie'>Get Specific Movie</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/movies/2267291"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2267291</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/movies/2267291"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"movie"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coach of the Year"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"plot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An ex-football-player Vietnam veteran (Robert Conrad) coaches delinquents at a juvenile correctional facility."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"original_runtime"</span><span class="p">:</span><span class="w"> </span><span class="mi">6000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"release_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">1980</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"film_rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quality_rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cast"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Robert Conrad"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Erin Gray"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Red West"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Daphne Maxwell"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"David Raynr"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Ricky Paull Goldin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Dean Hill"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Joneal Joplin"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"directors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Don Medford"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"awards"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"background_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2267294</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"cover_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2267293</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"thumbnail_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2267292</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Drama"</span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"show_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"airing_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"conflicted_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scheduled_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keep"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w"> </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recordings_path"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return all data for the Movie <code>path</code> requested.</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/movies/&lt;object_id&gt;</code></p>
+<h2 id='get-all-series'>Get All Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/series"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/guide/series/2100779"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/series/631734"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/series/631686"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/series/2272366"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This will return <code>paths</code> for all <code>series</code> registerered on the device. The example is truncated on purpose.</p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/series</code></p>
+<h2 id='get-specific-series'>Get Specific Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/series/2100779"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2100779</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/series/2100779"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel_path"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"schedule_rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"series"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abbott Elementary"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Sitcom"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A group of dedicated, passionate teachers — and a slightly tone-deaf principal — find themselves thrown together in a Philadelphia public school where, despite the odds stacked against them, they are determined to help their students succeed in life. Though these incredible public servants may be outnumbered and underfunded, they love what they do — even if they don't love the school district's less-than-stellar attitude toward educating children."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orig_air_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-07"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"episode_runtime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1800</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"series_rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tvpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cast"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Quinta Brunson"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tyler James Williams"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Janelle James"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Chris Perfetti"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Lisa Ann Walter"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Sheryl Lee Ralph"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"William Stanford Davis"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"awards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"won"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Emmy (Primetime)"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Outstanding Supporting Actress in a Comedy Series"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2022</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nominee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sheryl Lee Ralph"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"won"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Emmy (Primetime)"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Outstanding Writing for a Comedy Series"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2022</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"background_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2265261</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"cover_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2265260</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"thumbnail_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2265259</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"show_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"airing_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"conflicted_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scheduled_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keep"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w"> </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recordings_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/2183172"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return all data for the Series <code>path</code> requested.</p>
+<h3 id='http-request-16'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/series/&lt;object_id&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>object_id</strong></td>
+<td>The <strong>object_id</strong> of the Series</td>
+</tr>
+</tbody></table>
+<h2 id='get-active-series-episode'>Get Active Series Episode</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/series/episodes/2272260"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/series/episodes/2272260"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2272260</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"series_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/series/2272255"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"season_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/series/seasons/2272259"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auditions 1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Winners, finalists, fan favorites and viral sensations from AGT and Got Talent franchises around the world audition; one act is given a Golden Buzzer and earns a spot in the finals; the AGT super fans vote on one additional act to move to the finals."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"season_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orig_air_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-02"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"airing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-03T01:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/channels/975971"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">975971</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/channels/975971"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"call_sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WXIA-TV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"call_sign_src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WXIA-TV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"major"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NBC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hd_1080"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tms_station_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19587"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tms_affiliate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10991"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ota"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"show_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America's Got Talent: All-Stars"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"qualifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"new"</span><span class="p">,</span><span class="w"> </span><span class="s2">"series_premiere"</span><span class="p">,</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"primetime"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"qualifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"skip_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return all data for the Active Series Episode requested.</p>
+<h3 id='http-request-17'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/series/episodes/&lt;object_id&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>object_id</strong></td>
+<td>The <strong>object_id</strong> of the Series</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-sports'>Get All Sports</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/sports"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/guide/sports/2274202"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/sports/2270947"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/sports/2261429"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/guide/sports/2232007"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This will return <code>paths</code> for all <code>sports</code> registerered on the device. The example is truncated on purpose.</p>
+<h3 id='http-request-18'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/sports</code></p>
+<h2 id='get-specific-sport'>Get Specific Sport</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/sports/2274202"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2274202</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/sports/2274202"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel_path"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"schedule_rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sport"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMA Supercross"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coverage of AMA Supercross racing action from various locations."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Motorcycle Racing"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"background_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2274205</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"cover_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2274204</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"thumbnail_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2274203</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"show_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"airing_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"conflicted_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scheduled_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keep"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w"> </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recordings_path"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return all data for the Sports <code>path</code> requested.</p>
+<h3 id='http-request-19'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/sports/&lt;object_id&gt;</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>object_id</strong></td>
+<td>The <strong>object_id</strong> of the Sport</td>
+</tr>
+</tbody></table>
+<h2 id='get-active-sport-event'>Get Active Sport Event</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/sports/events/2265867"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/sports/events/2265867"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2265867</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sport_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/sports/2264596"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lakeland Magic at College Park Skyhawks"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"From Gateway Center Arena at College Park in College Park, Ga."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-2023"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"season_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regular"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"teams"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lakeland Magic"</span><span class="p">,</span><span class="w"> </span><span class="nl">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15400</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"College Park Skyhawks"</span><span class="p">,</span><span class="w"> </span><span class="nl">"team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20034</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"home_team_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20034</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"airing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-03T00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">7800</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/channels/612673"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">612673</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/channels/612673"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"call_sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WPCH-TV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"call_sign_src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WPCH-TV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"major"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hd_720"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tms_station_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32795"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tms_affiliate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Independent"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ota"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"show_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NBA G League Basketball"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"qualifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"live"</span><span class="p">,</span><span class="w"> </span><span class="s2">"primetime"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"qualifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"skip_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return the data for the specific Active Sports Event requested.</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/guide/sports/events/&lt;object_id&gt;</code></p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>object_id</strong></td>
+<td>The <strong>object_id</strong> of the Active Sport Event</td>
+</tr>
+</tbody></table>
+<h1 id='recordings'>Recordings</h1><h2 id='get-airings-2'>Get Airings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/airings"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/recordings/series/episodes/2267413"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/series/episodes/2265212"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/programs/airings/2261284"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/programs/airings/2260157"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a <code>path</code> to every Recording avaiable - for additional information, load the <code>path</code> or a set may be <strong>POST</strong>ed to <a href="#batch-submissions">/batch</a>.</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/airings</code></p>
+<h2 id='get-shows-2'>Get Shows</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/shows"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/recordings/series/2183172"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/movies/974203"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/programs/906209"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/sports/946945"</span><span class="w">
+  </span><span class="s2">"/recordings/series/2170883"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a <code>path</code> to all Shows matching existing Recordings. For more information, each <code>path</code> must be <strong>POST</strong>ed to <a href="#batch-submissions">/batch</a>.</p>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/shows</code></p>
+<h2 id='get-all-channels-2'>Get All Channels</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/channels"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/recordings/channels/568024"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/channels/577763"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/channels/634690"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/channels/974152"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This will return <code>paths</code> for all <code>Channels</code> used for existing <code>Recordings</code>. The example is truncated on purpose.</p>
+<h3 id='http-request-23'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/channels</code></p>
+<h2 id='get-specific-channel-2'>Get Specific Channel</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/channels/634690"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">634690</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/channels/634690"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"call_sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WSB-HD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"call_sign_src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WSB-HD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"major"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hd_720"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tms_station_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19586"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tms_affiliate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10003"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ota"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return all data for the channel <code>path</code> requested.</p>
+<h3 id='http-request-24'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/channels/&lt;object_id&gt;</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>object_id</strong></td>
+<td>The <strong>object_id</strong> of the Channel</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-movies-2'>Get All Movies</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/movies"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/recordings/movies/974203"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/movies/887235"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/movies/653522"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/movies/625353"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This will return <code>paths</code> for all recorded <code>movies</code> on the device. The example is truncated on purpose.</p>
+<h3 id='http-request-25'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/movies</code></p>
+<h2 id='get-specific-movie-2'>Get Specific Movie</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/movies/974203"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">974203</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/movies/974203"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"movie"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adventures in Silverado"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"plot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A stagecoach driver seeks to capture </span><span class="se">\"</span><span class="s2">The Monk,</span><span class="se">\"</span><span class="s2"> a notorious highwayman, in order to clear himself."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"original_runtime"</span><span class="p">:</span><span class="w"> </span><span class="mi">4500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"release_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">1948</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"film_rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quality_rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cast"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"William Bishop"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Forrest Tucker"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Gloria Henry"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"directors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Phil Karlson"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"awards"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"background_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">930054</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"cover_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">930053</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"thumbnail_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">930052</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"tms_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MV000204150000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Western"</span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"show_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"airing_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unwatched_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"protected_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"watched_and_protected_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"failed_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"up_next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/movies/airings/974202"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keep"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w"> </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"guide_path"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return all data for the Movie <code>path</code> requested.</p>
+<h3 id='http-request-26'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/movies/&lt;object_id&gt;</code></p>
+<h3 id='url-parameters-9'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>object_id</strong></td>
+<td>The <strong>object_id</strong> of the Movie</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-series-2'>Get All Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/series"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/recordings/series/2183172"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/series/2170891"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/series/2170883"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/series/597009"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/series/8647"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This will return <code>paths</code> for all <code>series</code> recorded on the device. The example is truncated on purpose.</p>
+<h3 id='http-request-27'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/series</code></p>
+<h2 id='get-specific-series-2'>Get Specific Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/series/2183172"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2183172</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/2183172"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"series"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abbott Elementary"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Sitcom"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A group of dedicated, passionate teachers — and a slightly tone-deaf principal — find themselves thrown together in a Philadelphia public school where, despite the odds stacked against them, they are determined to help their students succeed in life. Though these incredible public servants may be outnumbered and underfunded, they love what they do — even if they don't love the school district's less-than-stellar attitude toward educating children."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orig_air_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-07"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"episode_runtime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1860</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"series_rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tvpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cast"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Quinta Brunson"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tyler James Williams"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Janelle James"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Chris Perfetti"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Lisa Ann Walter"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Sheryl Lee Ralph"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"William Stanford Davis"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"awards"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"background_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2265261</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"cover_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2265260</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"thumbnail_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2265259</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"tms_series_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20001974"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tms_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SH038712170000"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"show_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"airing_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unwatched_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"protected_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"watched_and_protected_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"failed_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"up_next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/episodes/2235655"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keep"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w"> </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"guide_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/series/2100779"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return all data for the Series <code>path</code> requested.</p>
+<h3 id='http-request-28'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/series/&lt;object_id&gt;</code></p>
+<h3 id='url-parameters-10'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>object_id</strong></td>
+<td>The <strong>object_id</strong> of the Series</td>
+</tr>
+</tbody></table>
+<h2 id='get-specific-series-episode'>Get Specific Series Episode</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/series/episodes/2235655"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2235655</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/episodes/2235655"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"series_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/2183172"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"season_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/seasons/2183173"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"snapshot_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2248104</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"airing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-01T02:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1860</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/channels/634690"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">634690</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/channels/634690"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"call_sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WSB-HD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"call_sign_src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WSB-HD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"major"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hd_720"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tms_station_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19586"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tms_affiliate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10003"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ota"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"show_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abbott Elementary"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"video_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finished"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clean"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cloud"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uploading"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"audio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aac"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1369825280</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1918</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1280</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">720</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"comskip"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ready"</span><span class="p">,</span><span class="w"> </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"has_snap_grid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"schedule_offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w"> </span><span class="nl">"deprecated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"recorded_offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"airing_offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"seek"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"watched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nl">"protected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sick Day"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Janine is out sick for the day, so Ava grows desperate and must step in to help out; Barbara and Melissa revel in the quieter-than-normal teacher's lounge."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"season_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orig_air_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tms_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EP038712170023"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"qualifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"cc"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return all data for the Active Series Episode requested.</p>
+<h3 id='http-request-29'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/series/episodes/&lt;object_id&gt;</code></p>
+<h3 id='url-parameters-11'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>object_id</strong></td>
+<td>The <strong>object_id</strong> of the Series</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-sports-2'>Get All Sports</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/sports"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"/recordings/sports/946945"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/sports/889644"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"/recordings/sports/873643"</span><span class="p">,</span><span class="w">
+  </span><span class="err">....</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This will return <code>paths</code> for all <code>sports</code> recordings on the device. The example is truncated on purpose.</p>
+<h3 id='http-request-30'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/sports</code></p>
+<h2 id='get-specific-sport-2'>Get Specific Sport</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/sports/946945"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">946945</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/sports/946945"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sport"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016 NBA Finals"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Replay of games from the 2016 series between the Cavaliers and Warriors."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Basketball"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"background_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">941950</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"cover_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">941949</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"thumbnail_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">941948</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"tms_series_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18154447"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"show_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"airing_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unwatched_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"protected_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"watched_and_protected_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"failed_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"up_next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/sports/events/946944"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keep"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w"> </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"guide_path"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return all data for the Sports <code>path</code> requested.</p>
+<h3 id='http-request-31'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/sports/&lt;object_id&gt;</code></p>
+<h3 id='url-parameters-12'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>object_id</strong></td>
+<td>The <strong>object_id</strong> of the Sport</td>
+</tr>
+</tbody></table>
+<h2 id='get-specific-sport-event'>Get Specific Sport Event</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/sports/events/946944"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">946944</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/sports/events/946944"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sport_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/sports/946945"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"snapshot_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">946946</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"airing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-10T00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">10800</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/channels/634690"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">634690</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/channels/634690"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"call_sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WSB-HD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"call_sign_src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WSB-HD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"major"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hd_720"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tms_station_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19586"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tms_affiliate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10003"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ota"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"show_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016 NBA Finals"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"video_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finished"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clean"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cloud"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uploading"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"audio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ac3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">13290188800</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">10877</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1280</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">720</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"comskip"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ready"</span><span class="p">,</span><span class="w"> </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"has_snap_grid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"schedule_offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">-15</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="nl">"deprecated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"recorded_offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">-15</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"airing_offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"seek"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"watched"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nl">"protected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Game 7: Cleveland Cavaliers at Golden State Warriors"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Cleveland Cavaliers become the first team in NBA history to come back from a 3-1 deficit to win the NBA Finals. From June 19, 2016."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"season_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"teams"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"home_team_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tms_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EP034792120002"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"qualifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This will return the data for the specific Active Sports Event requested.</p>
+<h3 id='http-request-32'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/recordings/sports/events/&lt;object_id&gt;</code></p>
+<h3 id='url-parameters-13'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>object_id</strong></td>
+<td>The <strong>object_id</strong> of the Active Sport Event</td>
+</tr>
+</tbody></table>
+<h1 id='modifying-recordings'>Modifying Recordings</h1>
+<p>Recordings can be updated in 4 ways:</p>
+
+<ul>
+<li>Toggle the <code>user_info.watched</code> field</li>
+<li>Toggle the <code>user_info.protected</code> field</li>
+<li>Toggle the <code>schedule</code> related fields (unknown, not yet covered)</li>
+<li>Delete a recording</li>
+</ul>
+<h2 id='patch'>Patch</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c">#  curl -X PATCH "http://192.168.1.242:8885/recordings/series/episodes/2228935" -d '{"watched": false}'</span>
+</code></pre></div>
+<blockquote>
+<p>This sets <strong>watched</strong> to <strong>false</strong> - the full Airing record is returned witht the field updated (record truncated)</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2228935</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/episodes/2228935"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"series_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/2170891"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"season_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/seasons/2170892"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"snapshot_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"image_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2241603</span><span class="p">,</span><span class="w"> </span><span class="nl">"has_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"airing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-24T02:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"show_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Amazing Race"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"video_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finished"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clean"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cloud"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uploading"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"watched"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nl">"protected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-33'>HTTP Request</h3>
+<p><code>POST http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
+<h3 id='url-parameters-14'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>PATH</strong></td>
+<td>Any <strong>full path</strong> to a specific Recording, Channel, or Live Show (probably?)</td>
+</tr>
+</tbody></table>
+
+<p>For example, the <code>path</code> field returned from:</p>
+
+<ul>
+<li><a href="#get-specific-movie-2">Recordings - Get Specfic Movie</a></li>
+<li><a href="#get-specific-series-episode">Recordings - Get Specfic Series Episode</a></li>
+<li><a href="#get-specific-sport-event">Recordings - Get Specfic Sport Event</a></li>
+<li><a href="#get-specific-channel">Channels - Get Specific Channel</a></li>
+</ul>
+<h3 id='post-data'>POST DATA</h3>
+<p>A basic JSON object specfiying the field to change passed as PATCH data. Ie:</p>
+
+<ul>
+<li><code>{&quot;watched&quot;: false}</code> or <code>{&quot;watched&quot;: true}</code></li>
+<li><code>{&quot;protected&quot;: false}</code> or <code>{&quot;protected&quot;: true}</code></li>
+<li><code>{&quot;position&quot;: &lt;NUM&gt;}</code> - sets the position the recording has been watched until</li>
+<li><code>{&quot;schedule&quot;: &lt;RULE&gt;}</code> - no info yet on how to create/set scheduling rules</li>
+</ul>
+<h1 id='batch-submissions'>Batch Submissions</h1>
+<p>Batch operations are <strong>much</strong> faster than a bunch of single operations. For example, instead of making <strong>50</strong> requests for the first <strong>50</strong> recordings returned by <a href="#get-airings-2">Recordings - Get Airings</a>, you can simply take those 50 paths and make <strong>1</strong> request to <code>/batch</code> to receive all of the same data.</p>
+<h2 id='batch'>Batch</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># curl -X POST  "http://192.168.1.242:8885/batch" -d '["/recordings/series/episodes/2267413","/recordings/series/episodes/2265212","/recordings/programs/airings/2261284",  "/recordings/programs/airings/2260157"]'</span>
+</code></pre></div>
+<blockquote>
+<p>This will return an Object with a record for each <strong>path</strong> submitted</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"/recordings/series/episodes/2267413"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2267413</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/episodes/2267413"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"series_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/1625726"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"/recordings/series/episodes/2265212"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"/recordings/programs/airings/2261284"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/programs/airings/2261284"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2261284</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"program_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/programs/974166"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"/recordings/programs/airings/2260157"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/programs/airings/2260157"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2260157</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"program_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/programs/906209"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-34'>HTTP Request</h3>
+<p><code>POST http://192.168.1.242:8885/batch</code></p>
+<h3 id='post-data-2'>POST DATA</h3>
+<p>Post Data should be a JSON <strong>array</strong> of <strong>path</strong> fields as returned by calls such as <a href="#get-airings-2">Recordings - Get Airings</a>,<a href="#get-all-channels-2">Recordings - Get Channels</a>, other similar calls, or just a list of paths you&#39;ve collected.</p>
+<h1 id='watching'>Watching</h1>
+<p>Watching essentially doubles as your method for exporting recorded videos/saving live streams or actually viewing streams.</p>
+<h2 id='watch'>Watch</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># curl -X POST "http://192.168.1.242/recordings/series/episodes/2267414/watch"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f52ebc70-8867-44c8-8679-10b72a80f1e5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-03T17:17:20Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"keepalive"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"playlist_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://192.168.1.242:80/stream/pl.m3u8?IFLV85YRwrkBP4R0GmYQKw"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bif_url_sd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://192.168.1.242:80/stream/bif?-50ihDaQWXv5XUfCgjZ3Fw"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bif_url_hd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://192.168.1.242:80/stream/bif?-50ihDaQWXv5XUfCgjZ3Fw&amp;hd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"video_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"cutlist"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nc"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cuts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.003</span><span class="p">,</span><span class="w"> </span><span class="nl">"te"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.476</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mf">1045.267</span><span class="p">,</span><span class="w"> </span><span class="nl">"te"</span><span class="p">:</span><span class="w"> </span><span class="mf">1322.972</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mf">1889.86</span><span class="p">,</span><span class="w"> </span><span class="nl">"te"</span><span class="p">:</span><span class="w"> </span><span class="mf">2164.964</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mf">2514.993</span><span class="p">,</span><span class="w"> </span><span class="nl">"te"</span><span class="p">:</span><span class="w"> </span><span class="mf">2800.916</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># ffmpeg -i "http://192.168.1.242:80/stream/pl.m3u8?IFLV85YRwrkBP4R0GmYQKw" show.mp4</span>
+</code></pre></div>
+<blockquote>
+<p>Tada! The show <em>should</em> appear in <code>show.mp4</code> when that finishes</p>
+</blockquote>
+
+<p><strong>Watching</strong> consists of 2 parts:</p>
+
+<ol>
+<li>A <code>POST</code> request to a specific <strong>watch</strong> URL</li>
+<li>Grabbing the <code>playlist_url</code> returned and passing that to a media player, ffmpeg, or whatever else you want to process the video stream with</li>
+</ol>
+<h3 id='http-request-35'>HTTP Request</h3>
+<p><code>POST http://192.168.1.242:8885/&lt;PATH&gt;/watch</code></p>
+<h3 id='url-parameters-15'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>PATH</strong></td>
+<td>Any <strong>full path</strong> to a specific Recording, Channel, or Live Show (probably?)</td>
+</tr>
+</tbody></table>
+
+<p>For example, the <code>path</code> field returned from:</p>
+
+<ul>
+<li><a href="#get-specific-movie-2">Recordings - Get Specfic Movie</a></li>
+<li><a href="#get-specific-series-episode">Recordings - Get Specfic Series Episode</a></li>
+<li><a href="#get-specific-sport-event">Recordings - Get Specfic Sport Event</a></li>
+</ul>
+<h1 id='3rd-party-tools'>3rd Party Tools</h1>
+<p>Some projects that use it are:</p>
+
+<ul>
+<li><a href="https://github.com/Nuvyyo/script.tablo">script.tablo</a> - A Kodi add-on (defuct) by Nuvyyo, so kind of a reference implementation</li>
+<li><p><a href="https://community.tablotv.com/c/tablo-apps/third-party-apps-plex/17">Official 3rd Party Tool Forum</a> - Tablo&#39;s official 3rd Party Tool forum covering much of what you&#39;ll find here</p></li>
+<li><p><a href="https://github.com/jessedp/tablo-api-js">tablo-api-js</a> - a small wrapper for connecting to a Tablo device via javascript</p></li>
+<li><p><a href="https://github.com/jessedp/tut">tut</a> - Python 3+ CLI for exporting, deleting recordings</p></li>
+<li><p><a href="https://github.com/jessedp/tablo-tools-electron">Tablo Tools</a> - An Electron UI project (uses tablo-api-js) for exporting, deleting recordings and more</p></li>
+<li><p><a href="https://github.com/cyclej/TabloRipper/wiki">Tablo Ripper</a> - Windows app for ripping recordings from your device(s) (no longer under development)</p></li>
+<li><p><a href="https://endlessnow.com/ten/SurLaTablo/">SurLaTablo</a> - Python 2.7 CLI script for extracting recordings from your device(s)</p></li>
+<li><p><a href="https://jettsoft.com/products.html">Tablo Exporter</a> - Java UI for exporting recordings from your device(s)</p></li>
+<li><p><a href="http://remedylegacy.com/tablo/">APL</a> - Java+JFX UI for exporting recordings from your device(s)</p></li>
+</ul>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
