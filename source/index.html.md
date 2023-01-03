@@ -6,6 +6,7 @@ language_tabsDISABLED: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://community.tablotv.com/c/tablo-apps/third-party-apps-plex/17' target="_new">Tablo 3rd Party Community Forum</a>
+  - <a href='https://github.com/jessedp/tablo-api-docs/blob/main/source/index.html.md' target="_new">Edit on GitHub!</a>
 
 includesDISABLED:
   - errors
