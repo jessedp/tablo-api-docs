@@ -1534,15 +1534,21 @@ For example, the `path` field returned from:
 
 # 3rd Party Tools
 
-Some projects that use it are:
+## Open Source
+
+These projects interact with Tablo devices using the above info (maybe more!) and have made their source available for free:
 
 - [script.tablo](https://github.com/Nuvyyo/script.tablo) - A Kodi add-on (defuct) by Nuvyyo, so kind of a reference implementation
 - [Official 3rd Party Tool Forum](https://community.tablotv.com/c/tablo-apps/third-party-apps-plex/17) - Tablo's official 3rd Party Tool forum covering much of what you'll find here
-
 - [tablo-api-js](https://github.com/jessedp/tablo-api-js) - a small wrapper for connecting to a Tablo device via javascript
 - [tut](https://github.com/jessedp/tut) - Python 3+ CLI for exporting, deleting recordings
 - [Tablo Tools](https://github.com/jessedp/tablo-tools-electron) - An Electron UI project (uses tablo-api-js) for exporting, deleting recordings and more
-- [Tablo Ripper](https://github.com/cyclej/TabloRipper/wiki) - Windows app for ripping recordings from your device(s) (no longer under development)
 - [SurLaTablo](https://endlessnow.com/ten/SurLaTablo/) - Python 2.7 CLI script for extracting recordings from your device(s)
+
+## Closed Source
+
+These tools are free, though their source is unavailable. To replicate actions they are taking, use Wireshark or similar to monitor the network activity.
+
+- [Tablo Ripper](https://github.com/cyclej/TabloRipper/wiki) - Windows app for ripping recordings from your device(s) (no longer under development)
 - [Tablo Exporter](https://jettsoft.com/products.html) - Java UI for exporting recordings from your device(s)
 - [APL](http://remedylegacy.com/tablo/) - Java+JFX UI for exporting recordings from your device(s)
