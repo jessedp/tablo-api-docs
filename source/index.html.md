@@ -34,7 +34,7 @@ Tablo offers both [**Network Connected**](https://www.tablotv.com/tablo-dvrs-how
 
 There is no Authentication or Authorization required for the publicly availale API.
 
-There _is_ a private API used by the Tablo Connect web app (and possible other official clients) that uses [Meteor](https://www.meteor.com/), but access to the channels, etc in use are not publicly accessible.
+There _is_ a private API used by the Tablo Connect web app (and possibly other official clients) which uses [Meteor](https://www.meteor.com/), but there's no public access to those channels, etc.
 
 # Network Options
 
