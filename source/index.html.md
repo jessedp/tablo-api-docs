@@ -1371,6 +1371,41 @@ Recordings can be updated in 4 ways:
 - Toggle the `schedule` related fields (unknown, not yet covered)
 - Delete a recording
 
+## Delete
+
+```shell
+#  curl -X DELETE "http://192.168.1.242:8885/recordings/series/episodes/2228935"
+```
+
+> This sets **deletes** the recording in the path provided.
+> A successful call will return a **HTTP 204 status code**. An erorr will return something similar to:
+
+```json
+{
+  "error": {
+    "code": "object_not_found",
+    "details": 2228935,
+    "description": "Specified object not found"
+  }
+}
+```
+
+### HTTP Request
+
+`DELETE http://192.168.1.242:8885/<PATH>`
+
+### URL Parameters
+
+| Parameter | Description                               |
+| --------- | ----------------------------------------- |
+| **PATH**  | Any **full path** to a specific Recording |
+
+For example, the `path` field returned from:
+
+- [Recordings - Get Specfic Movie](#get-specific-movie-2)
+- [Recordings - Get Specfic Series Episode](#get-specific-series-episode)
+- [Recordings - Get Specfic Sport Event](#get-specific-sport-event)
+
 ## Patch
 
 ```shell
@@ -1404,20 +1439,19 @@ Recordings can be updated in 4 ways:
 
 ### HTTP Request
 
-`POST http://192.168.1.242:8885/<PATH>`
+`PATCH http://192.168.1.242:8885/<PATH>`
 
 ### URL Parameters
 
-| Parameter | Description                                                                  |
-| --------- | ---------------------------------------------------------------------------- |
-| **PATH**  | Any **full path** to a specific Recording, Channel, or Live Show (probably?) |
+| Parameter | Description                               |
+| --------- | ----------------------------------------- |
+| **PATH**  | Any **full path** to a specific Recording |
 
 For example, the `path` field returned from:
 
 - [Recordings - Get Specfic Movie](#get-specific-movie-2)
 - [Recordings - Get Specfic Series Episode](#get-specific-series-episode)
 - [Recordings - Get Specfic Sport Event](#get-specific-sport-event)
-- [Channels - Get Specific Channel](#get-specific-channel)
 
 ### POST DATA
 
