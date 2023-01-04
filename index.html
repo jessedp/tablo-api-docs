@@ -446,6 +446,9 @@
             <a href="#modifying-recordings" class="toc-h1 toc-link" data-title="Modifying Recordings">Modifying Recordings</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#delete" class="toc-h2 toc-link" data-title="Delete">Delete</a>
+                  </li>
+                  <li>
                     <a href="#patch" class="toc-h2 toc-link" data-title="Patch">Patch</a>
                   </li>
               </ul>
@@ -1661,6 +1664,41 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 <li>Toggle the <code>schedule</code> related fields (unknown, not yet covered)</li>
 <li>Delete a recording</li>
 </ul>
+<h2 id='delete'>Delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c">#  curl -X DELETE "http://192.168.1.242:8885/recordings/series/episodes/2228935"</span>
+</code></pre></div>
+<blockquote>
+<p>This sets <strong>deletes</strong> the recording in the path provided.
+A successful call will return a <strong>HTTP 204 status code</strong>. An erorr will return something similar to:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object_not_found"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="mi">2228935</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specified object not found"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-33'>HTTP Request</h3>
+<p><code>DELETE http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
+<h3 id='url-parameters-14'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>PATH</strong></td>
+<td>Any <strong>full path</strong> to a specific Recording</td>
+</tr>
+</tbody></table>
+
+<p>For example, the <code>path</code> field returned from:</p>
+
+<ul>
+<li><a href="#get-specific-movie-2">Recordings - Get Specfic Movie</a></li>
+<li><a href="#get-specific-series-episode">Recordings - Get Specfic Series Episode</a></li>
+<li><a href="#get-specific-sport-event">Recordings - Get Specfic Sport Event</a></li>
+</ul>
 <h2 id='patch'>Patch</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c">#  curl -X PATCH "http://192.168.1.242:8885/recordings/series/episodes/2228935" -d '{"watched": false}'</span>
 </code></pre></div>
 <blockquote>
@@ -1686,9 +1724,9 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"watched"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nl">"protected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-33'>HTTP Request</h3>
-<p><code>POST http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
-<h3 id='url-parameters-14'>URL Parameters</h3>
+</span></code></pre></div><h3 id='http-request-34'>HTTP Request</h3>
+<p><code>PATCH http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
+<h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1697,7 +1735,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </thead><tbody>
 <tr>
 <td><strong>PATH</strong></td>
-<td>Any <strong>full path</strong> to a specific Recording, Channel, or Live Show (probably?)</td>
+<td>Any <strong>full path</strong> to a specific Recording</td>
 </tr>
 </tbody></table>
 
@@ -1707,7 +1745,6 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 <li><a href="#get-specific-movie-2">Recordings - Get Specfic Movie</a></li>
 <li><a href="#get-specific-series-episode">Recordings - Get Specfic Series Episode</a></li>
 <li><a href="#get-specific-sport-event">Recordings - Get Specfic Sport Event</a></li>
-<li><a href="#get-specific-channel">Channels - Get Specific Channel</a></li>
 </ul>
 <h3 id='post-data'>POST DATA</h3>
 <p>A basic JSON object specfiying the field to change passed as PATCH data. Ie:</p>
@@ -1746,7 +1783,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
     </span><span class="err">...</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-34'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-35'>HTTP Request</h3>
 <p><code>POST http://192.168.1.242:8885/batch</code></p>
 <h3 id='post-data-2'>POST DATA</h3>
 <p>Post Data should be a JSON <strong>array</strong> of <strong>path</strong> fields as returned by calls such as <a href="#get-airings-2">Recordings - Get Airings</a>,<a href="#get-all-channels-2">Recordings - Get Channels</a>, other similar calls, or just a list of paths you&#39;ve collected.</p>
@@ -1787,9 +1824,9 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 <li>A <code>POST</code> request to a specific <strong>watch</strong> URL</li>
 <li>Grabbing the <code>playlist_url</code> returned and passing that to a media player, ffmpeg, or whatever else you want to process the video stream with</li>
 </ol>
-<h3 id='http-request-35'>HTTP Request</h3>
+<h3 id='http-request-36'>HTTP Request</h3>
 <p><code>POST http://192.168.1.242:8885/&lt;PATH&gt;/watch</code></p>
-<h3 id='url-parameters-15'>URL Parameters</h3>
+<h3 id='url-parameters-16'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
