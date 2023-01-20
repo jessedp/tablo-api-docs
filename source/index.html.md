@@ -854,6 +854,13 @@ This will return the data for the specific Active Sports Event requested.
 | ------------- | ------------------------------------------- |
 | **object_id** | The **object_id** of the Active Sport Event |
 
+## Schedule an Airing to Record
+
+```shell
+#  curl -X PATCH "http://192.168.1.242:8885/guide/movies/airings/2267295" -d '{"scheduled": true}'
+```
+> The above command will set an airing to be scheduled to record.  Must be used on the airings path.  
+
 # Recordings
 
 ## Get Airings
