@@ -402,6 +402,20 @@
               </ul>
           </li>
           <li>
+            <a href="#scheduling-recordings" class="toc-h1 toc-link" data-title="Scheduling Recordings">Scheduling Recordings</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#schedule-single-airing-to-record" class="toc-h2 toc-link" data-title="Schedule Single Airing to Record">Schedule Single Airing to Record</a>
+                  </li>
+                  <li>
+                    <a href="#schedule-series-to-record" class="toc-h2 toc-link" data-title="Schedule Series to Record">Schedule Series to Record</a>
+                  </li>
+                  <li>
+                    <a href="#modify-series-options" class="toc-h2 toc-link" data-title="Modify Series Options">Modify Series Options</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#recordings" class="toc-h1 toc-link" data-title="Recordings">Recordings</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1209,6 +1223,222 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 <td>The <strong>object_id</strong> of the Active Sport Event</td>
 </tr>
 </tbody></table>
+<h1 id='scheduling-recordings'>Scheduling Recordings</h1><h2 id='schedule-single-airing-to-record'>Schedule Single Airing to Record</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"http://192.168.1.242:8885/guide/movies/airings/2267295"</span> <span class="nt">-d</span> <span class="s1">'{"scheduled": true}'</span>
+</code></pre></div>
+<blockquote>
+<p>Schedule - returns a typical episode/event/movie/program record with the <code>schedule</code> field updated</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/series/episodes/2299356"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2299356</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+  </span><span class="nl">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduled"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"qualifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"skip_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"http://192.168.1.242:8885/guide/movies/airings/2267295"</span> <span class="nt">-d</span> <span class="s1">'{"scheduled": false}'</span>
+</code></pre></div>
+<blockquote>
+<p>Unschedule - returns a typical episode/event/movie/program record with the <code>schedule</code> field updated</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/series/episodes/2299356"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2299356</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+  </span><span class="nl">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"qualifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"skip_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-21'>HTTP Request</h3>
+<p><code>PATCH http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>PATH</strong></td>
+<td>The <strong>path</strong> of a current/upcoming airing from <a href="#get-airings">/guide/airings</a></td>
+</tr>
+</tbody></table>
+<h3 id='post-data'>POST DATA</h3>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{ &quot;scheduled&quot;: true }</code></td>
+<td>Start/set recording of airing</td>
+</tr>
+<tr>
+<td><code>{ &quot;scheduled&quot;: false }</code></td>
+<td>Stop/unset recording of airing</td>
+</tr>
+</tbody></table>
+<h2 id='schedule-series-to-record'>Schedule Series to Record</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"http://192.168.1.242:8885/guide/series/2281440"</span> <span class="nt">-d</span> <span class="s1">'{"schedule": "all"}'</span>
+</code></pre></div>
+<blockquote>
+<p>Record ALL episodes, returns a <a href="#get-specific-series">series</a> with the schedule modified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2281440</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/series/2281440"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel_path"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"schedule_rule"</span><span class="p">:</span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"http://192.168.1.242:8885/guide/series/2281440"</span> <span class="nt">-d</span> <span class="s1">'{"schedule": "new"}'</span>
+</code></pre></div>
+<blockquote>
+<p>Record NEW episodes, returns a <a href="#get-specific-series">series</a> with the schedule modified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2281440</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/series/2281440"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel_path"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"schedule_rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"http://192.168.1.242:8885/guide/series/2281440"</span> <span class="nt">-d</span> <span class="s1">'{"schedule": "none"}'</span>
+</code></pre></div>
+<blockquote>
+<p>Record NO episodes, returns a <a href="#get-specific-series">series</a> with the schedule modified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2281440</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/series/2281440"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel_path"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"schedule_rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-22'>HTTP Request</h3>
+<p><code>PATCH http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
+<h3 id='url-parameters-9'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>PATH</strong></td>
+<td>The <strong>path</strong> of a series/events/movies/programs from <a href="#get-shows">/guide/shows</a></td>
+</tr>
+</tbody></table>
+<h3 id='post-data-2'>POST DATA</h3>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{ &quot;schedule&quot;: &quot;all&quot; }</code></td>
+<td>Record <strong>ALL</strong> matching airings</td>
+</tr>
+<tr>
+<td><code>{ &quot;schedule&quot;: &quot;new&quot; }</code></td>
+<td>Record <strong>NEW</strong> matching airings</td>
+</tr>
+<tr>
+<td><code>{ &quot;schedule&quot;: &quot;none&quot; }</code></td>
+<td>Do not record matching airings</td>
+</tr>
+</tbody></table>
+<h2 id='modify-series-options'>Modify Series Options</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"http://192.168.1.242:8885/guide/series/2281440"</span> <span class="nt">-d</span> <span class="s1">'{"keep":{"rule":"count","count":1}}'</span>
+</code></pre></div>
+<blockquote>
+<p>As with above, a <a href="#get-specific-series">series</a> record will be returned with whatever updated changed. This is the one and only example.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2281440</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/series/2281440"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel_path"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"schedule_rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"keep"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"count"</span><span class="p">,</span><span class="w"> </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-23'>HTTP Request</h3>
+<p><code>PATCH http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
+<h3 id='url-parameters-10'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>PATH</strong></td>
+<td>The <strong>path</strong> of a series/events/movies/programs from <a href="#get-shows">/guide/shows</a></td>
+</tr>
+</tbody></table>
+<h3 id='post-data-3'>POST DATA</h3>
+<p>As can be seen with the defaults at the bottom, multiple options/rules can be combined.</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{&quot;keep&quot;:{&quot;rule&quot;:&quot;count&quot;,&quot;count&quot;:1}}</code></td>
+<td>Keep Last <strong>count</strong> Recordings (1, 3, 5, 10, 20)</td>
+</tr>
+<tr>
+<td><code>{&quot;keep&quot;:{&quot;rule&quot;:&quot;all&quot;,&quot;count&quot;:null}}</code></td>
+<td>Keep <strong>all</strong> Recordings</td>
+</tr>
+<tr>
+<td><code>{&quot;schedule&quot;:{&quot;channel_path&quot;:&quot;/guide/channels/975971&quot;}}</code></td>
+<td>Limit Recording to a single <a href="#get-all-channels">Channel</a></td>
+</tr>
+<tr>
+<td><code>{&quot;schedule&quot;:{&quot;channel_path&quot;:null}}</code></td>
+<td>Do not limit Channel</td>
+</tr>
+<tr>
+<td><code>{&quot;schedule&quot;:{&quot;offsets&quot;:{&quot;source&quot;:&quot;show&quot;,&quot;start&quot;:-120}}}</code></td>
+<td>Start recording 2/5/10 minutes early - <strong>start</strong> = (-x * 60)</td>
+</tr>
+<tr>
+<td><code>{&quot;schedule&quot;:{&quot;offsets&quot;:{&quot;source&quot;:&quot;show&quot;,&quot;start&quot;:0}}}</code></td>
+<td>Start recording on time</td>
+</tr>
+<tr>
+<td><code>{&quot;schedule&quot;:{&quot;offsets&quot;:{&quot;source&quot;:&quot;show&quot;,&quot;end&quot;:300}}}</code></td>
+<td>Delay recording end by 5/15/30/1hr/2hr/3hr minutes early <strong>end</strong> = (x * 60sec)</td>
+</tr>
+<tr>
+<td><code>{&quot;schedule&quot;: { &quot;channel_path&quot;:null, &quot;offsets&quot;:{&quot;source&quot;:&quot;none&quot;}}, &quot;keep&quot;:{&quot;rule&quot;:&quot;none&quot;, &quot;count&quot;:null}}</code></td>
+<td>Use Defaults</td>
+</tr>
+</tbody></table>
 <h1 id='recordings'>Recordings</h1><h2 id='get-airings-2'>Get Airings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/airings"</span>
 </code></pre></div>
 <blockquote>
@@ -1223,7 +1453,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a <code>path</code> to every Recording avaiable - for additional information, load the <code>path</code> or a set may be <strong>POST</strong>ed to <a href="#batch-submissions">/batch</a>.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/airings</code></p>
 <h2 id='get-shows-2'>Get Shows</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/shows"</span>
 </code></pre></div>
@@ -1240,7 +1470,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a <code>path</code> to all Shows matching existing Recordings. For more information, each <code>path</code> must be <strong>POST</strong>ed to <a href="#batch-submissions">/batch</a>.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/shows</code></p>
 <h2 id='get-all-channels-2'>Get All Channels</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/channels"</span>
 </code></pre></div>
@@ -1256,7 +1486,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all <code>Channels</code> used for existing <code>Recordings</code>. The example is truncated on purpose.</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/channels</code></p>
 <h2 id='get-specific-channel-2'>Get Specific Channel</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/channels/634690"</span>
 </code></pre></div>
@@ -1281,9 +1511,9 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the channel <code>path</code> requested.</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/channels/&lt;object_id&gt;</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
+<h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1309,7 +1539,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all recorded <code>movies</code> on the device. The example is truncated on purpose.</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/movies</code></p>
 <h2 id='get-specific-movie-2'>Get Specific Movie</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/movies/974203"</span>
 </code></pre></div>
@@ -1348,9 +1578,9 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Movie <code>path</code> requested.</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/movies/&lt;object_id&gt;</code></p>
-<h3 id='url-parameters-9'>URL Parameters</h3>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1377,7 +1607,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all <code>series</code> recorded on the device. The example is truncated on purpose.</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-30'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/series</code></p>
 <h2 id='get-specific-series-2'>Get Specific Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/series/2183172"</span>
 </code></pre></div>
@@ -1423,9 +1653,9 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Series <code>path</code> requested.</p>
-<h3 id='http-request-28'>HTTP Request</h3>
+<h3 id='http-request-31'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/series/&lt;object_id&gt;</code></p>
-<h3 id='url-parameters-10'>URL Parameters</h3>
+<h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1502,9 +1732,9 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Active Series Episode requested.</p>
-<h3 id='http-request-29'>HTTP Request</h3>
+<h3 id='http-request-32'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/series/episodes/&lt;object_id&gt;</code></p>
-<h3 id='url-parameters-11'>URL Parameters</h3>
+<h3 id='url-parameters-14'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1529,7 +1759,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all <code>sports</code> recordings on the device. The example is truncated on purpose.</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-33'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/sports</code></p>
 <h2 id='get-specific-sport-2'>Get Specific Sport</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/sports/946945"</span>
 </code></pre></div>
@@ -1561,9 +1791,9 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Sports <code>path</code> requested.</p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-34'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/sports/&lt;object_id&gt;</code></p>
-<h3 id='url-parameters-12'>URL Parameters</h3>
+<h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1641,9 +1871,9 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return the data for the specific Active Sports Event requested.</p>
-<h3 id='http-request-32'>HTTP Request</h3>
+<h3 id='http-request-35'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/sports/events/&lt;object_id&gt;</code></p>
-<h3 id='url-parameters-13'>URL Parameters</h3>
+<h3 id='url-parameters-16'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1677,9 +1907,9 @@ A successful call will return a <strong>HTTP 204 status code</strong>. An erorr 
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specified object not found"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-33'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-36'>HTTP Request</h3>
 <p><code>DELETE http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
-<h3 id='url-parameters-14'>URL Parameters</h3>
+<h3 id='url-parameters-17'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1724,9 +1954,9 @@ A successful call will return a <strong>HTTP 204 status code</strong>. An erorr 
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"watched"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nl">"protected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-34'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-37'>HTTP Request</h3>
 <p><code>PATCH http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
-<h3 id='url-parameters-15'>URL Parameters</h3>
+<h3 id='url-parameters-18'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1746,7 +1976,7 @@ A successful call will return a <strong>HTTP 204 status code</strong>. An erorr 
 <li><a href="#get-specific-series-episode">Recordings - Get Specfic Series Episode</a></li>
 <li><a href="#get-specific-sport-event">Recordings - Get Specfic Sport Event</a></li>
 </ul>
-<h3 id='post-data'>POST DATA</h3>
+<h3 id='post-data-4'>POST DATA</h3>
 <p>A basic JSON object specfiying the field to change passed as PATCH data. Ie:</p>
 
 <ul>
@@ -1783,9 +2013,9 @@ A successful call will return a <strong>HTTP 204 status code</strong>. An erorr 
     </span><span class="err">...</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-35'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-38'>HTTP Request</h3>
 <p><code>POST http://192.168.1.242:8885/batch</code></p>
-<h3 id='post-data-2'>POST DATA</h3>
+<h3 id='post-data-5'>POST DATA</h3>
 <p>Post Data should be a JSON <strong>array</strong> of <strong>path</strong> fields as returned by calls such as <a href="#get-airings-2">Recordings - Get Airings</a>,<a href="#get-all-channels-2">Recordings - Get Channels</a>, other similar calls, or just a list of paths you&#39;ve collected.</p>
 <h1 id='watching'>Watching</h1>
 <p>Watching essentially doubles as your method for exporting recorded videos/saving live streams or actually viewing streams.</p>
@@ -1824,9 +2054,9 @@ A successful call will return a <strong>HTTP 204 status code</strong>. An erorr 
 <li>A <code>POST</code> request to a specific <strong>watch</strong> URL</li>
 <li>Grabbing the <code>playlist_url</code> returned and passing that to a media player, ffmpeg, or whatever else you want to process the video stream with</li>
 </ol>
-<h3 id='http-request-36'>HTTP Request</h3>
+<h3 id='http-request-39'>HTTP Request</h3>
 <p><code>POST http://192.168.1.242:8885/&lt;PATH&gt;/watch</code></p>
-<h3 id='url-parameters-16'>URL Parameters</h3>
+<h3 id='url-parameters-19'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
