@@ -344,6 +344,9 @@
                   <li>
                     <a href="#get-all-hard-drives" class="toc-h2 toc-link" data-title="Get All Hard drives">Get All Hard drives</a>
                   </li>
+                  <li>
+                    <a href="#get-all-tuners" class="toc-h2 toc-link" data-title="Get All Tuners">Get All Tuners</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -639,7 +642,7 @@
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This returns information about all hard drives connectded to the Tablo.</p>
+<p>This returns information about all hard drives connected to the Tablo.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/server/capabilities</code></p>
 <h2 id='get-overall-guide-status'>Get Overall Guide Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/server/guide/status"</span>
@@ -698,9 +701,30 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>This returns information about all hard drives connectded to the Tablo.</p>
+<p>This returns information about all hard drives connected to the Tablo.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/server/harddrives</code></p>
+<h2 id='get-all-tuners'>Get All Tuners</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/server/tuners"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"in_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/channels/612649"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recording"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/episodes/2297107"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"in_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/guide/channels/612675"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recording"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/recordings/series/episodes/2297099"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This returns information about all tuners in the Tablo.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET http://192.168.1.242:8885/server/tuners</code></p>
 <h1 id='settings'>Settings</h1>
 <p>Methods to gather information about some basic server setttings</p>
 <h2 id='get-general-settings'>Get General Settings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/settings/info"</span>
@@ -723,7 +747,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This returns the general settings for the device</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/settings/info</code></p>
 <h2 id='get-recording-quality-options'>Get Recording Quality Options</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/settings/recording_qualities"</span>
 </code></pre></div>
@@ -739,7 +763,7 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This returns the recording quality options supported by the device.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/settings/recording_qualities</code></p>
 <h2 id='get-specific-recording-quality-info'>Get Specific Recording Quality info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/settings/recording_qualities/10"</span>
 </code></pre></div>
@@ -756,7 +780,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This returns details on a specific recording quality option for the device.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/settings/recording_qualities/&lt;NUM&gt;</code></p>
 
 <p>The <strong>number</strong> at the end of each entry can be passed to <a href="#get-specific-recording-quality-info">Get a Specific Recording Quality Setting</a>. Also note that each entry here is also a <strong>path</strong> that can simply be appended to your <code>http://server:8885/</code> address.</p>
@@ -788,7 +812,7 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a <code>path</code> to every Airing avaiable - for additional information, load the <code>path</code> or a set may be <strong>POST</strong>ed to <a href="#batch-submissions">/batch</a>.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/airings</code></p>
 <h2 id='get-shows'>Get Shows</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/shows"</span>
 </code></pre></div>
@@ -805,7 +829,7 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a <code>path</code> to ANY shows matching the query parameters that the Guide currently has available to it. For more information, each <code>path</code> must be <strong>POST</strong>ed to <a href="#batch-submissions">/batch</a>.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/shows</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -843,7 +867,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all <code>channels</code> registerered on the device. The example is truncated on purpose.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/channels</code></p>
 <h2 id='get-specific-channel'>Get Specific Channel</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/channels/982743"</span>
 </code></pre></div>
@@ -868,7 +892,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the channel <code>path</code> requested.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/channels/&lt;object_id&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
@@ -896,7 +920,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all <code>movies</code> registerered on the device. The example is truncated on purpose.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/movies</code></p>
 <h2 id='get-specific-movie'>Get Specific Movie</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/movies/2267291"</span>
 </code></pre></div>
@@ -940,7 +964,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Movie <code>path</code> requested.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/movies/&lt;object_id&gt;</code></p>
 <h2 id='get-all-series'>Get All Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/series"</span>
 </code></pre></div>
@@ -956,7 +980,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all <code>series</code> registerered on the device. The example is truncated on purpose.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/series</code></p>
 <h2 id='get-specific-series'>Get Specific Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/series/2100779"</span>
 </code></pre></div>
@@ -1017,7 +1041,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Series <code>path</code> requested.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/series/&lt;object_id&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
@@ -1080,7 +1104,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Active Series Episode requested.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/series/episodes/&lt;object_id&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
@@ -1108,7 +1132,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all <code>sports</code> registerered on the device. The example is truncated on purpose.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/sports</code></p>
 <h2 id='get-specific-sport'>Get Specific Sport</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/guide/sports/2274202"</span>
 </code></pre></div>
@@ -1142,7 +1166,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Sports <code>path</code> requested.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/sports/&lt;object_id&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -1209,7 +1233,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return the data for the specific Active Sports Event requested.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/guide/sports/events/&lt;object_id&gt;</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
@@ -1255,7 +1279,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
     </span><span class="nl">"offsets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w"> </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-21'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-22'>HTTP Request</h3>
 <p><code>PATCH http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
@@ -1333,7 +1357,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
   </span><span class="nl">"schedule_rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-22'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-23'>HTTP Request</h3>
 <p><code>PATCH http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
@@ -1383,7 +1407,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
   </span><span class="nl">"schedule_rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"keep"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"count"</span><span class="p">,</span><span class="w"> </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-23'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-24'>HTTP Request</h3>
 <p><code>PATCH http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
@@ -1453,7 +1477,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a <code>path</code> to every Recording avaiable - for additional information, load the <code>path</code> or a set may be <strong>POST</strong>ed to <a href="#batch-submissions">/batch</a>.</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/airings</code></p>
 <h2 id='get-shows-2'>Get Shows</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/shows"</span>
 </code></pre></div>
@@ -1470,7 +1494,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a <code>path</code> to all Shows matching existing Recordings. For more information, each <code>path</code> must be <strong>POST</strong>ed to <a href="#batch-submissions">/batch</a>.</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/shows</code></p>
 <h2 id='get-all-channels-2'>Get All Channels</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/channels"</span>
 </code></pre></div>
@@ -1486,7 +1510,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all <code>Channels</code> used for existing <code>Recordings</code>. The example is truncated on purpose.</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/channels</code></p>
 <h2 id='get-specific-channel-2'>Get Specific Channel</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/channels/634690"</span>
 </code></pre></div>
@@ -1511,7 +1535,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the channel <code>path</code> requested.</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/channels/&lt;object_id&gt;</code></p>
 <h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
@@ -1539,7 +1563,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all recorded <code>movies</code> on the device. The example is truncated on purpose.</p>
-<h3 id='http-request-28'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/movies</code></p>
 <h2 id='get-specific-movie-2'>Get Specific Movie</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/movies/974203"</span>
 </code></pre></div>
@@ -1578,7 +1602,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Movie <code>path</code> requested.</p>
-<h3 id='http-request-29'>HTTP Request</h3>
+<h3 id='http-request-30'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/movies/&lt;object_id&gt;</code></p>
 <h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
@@ -1607,7 +1631,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all <code>series</code> recorded on the device. The example is truncated on purpose.</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-31'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/series</code></p>
 <h2 id='get-specific-series-2'>Get Specific Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/series/2183172"</span>
 </code></pre></div>
@@ -1653,7 +1677,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Series <code>path</code> requested.</p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-32'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/series/&lt;object_id&gt;</code></p>
 <h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
@@ -1732,7 +1756,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Active Series Episode requested.</p>
-<h3 id='http-request-32'>HTTP Request</h3>
+<h3 id='http-request-33'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/series/episodes/&lt;object_id&gt;</code></p>
 <h3 id='url-parameters-14'>URL Parameters</h3>
 <table><thead>
@@ -1759,7 +1783,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This will return <code>paths</code> for all <code>sports</code> recordings on the device. The example is truncated on purpose.</p>
-<h3 id='http-request-33'>HTTP Request</h3>
+<h3 id='http-request-34'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/sports</code></p>
 <h2 id='get-specific-sport-2'>Get Specific Sport</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://192.168.1.242:8885/recordings/sports/946945"</span>
 </code></pre></div>
@@ -1791,7 +1815,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return all data for the Sports <code>path</code> requested.</p>
-<h3 id='http-request-34'>HTTP Request</h3>
+<h3 id='http-request-35'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/sports/&lt;object_id&gt;</code></p>
 <h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
@@ -1871,7 +1895,7 @@ curl &quot;http://192.168.1.242:8885/guide/shows?qualifier=premiering&quot;
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This will return the data for the specific Active Sports Event requested.</p>
-<h3 id='http-request-35'>HTTP Request</h3>
+<h3 id='http-request-36'>HTTP Request</h3>
 <p><code>GET http://192.168.1.242:8885/recordings/sports/events/&lt;object_id&gt;</code></p>
 <h3 id='url-parameters-16'>URL Parameters</h3>
 <table><thead>
@@ -1907,7 +1931,7 @@ A successful call will return a <strong>HTTP 204 status code</strong>. An erorr 
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specified object not found"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-36'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-37'>HTTP Request</h3>
 <p><code>DELETE http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
 <h3 id='url-parameters-17'>URL Parameters</h3>
 <table><thead>
@@ -1954,7 +1978,7 @@ A successful call will return a <strong>HTTP 204 status code</strong>. An erorr 
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"watched"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nl">"protected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-37'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-38'>HTTP Request</h3>
 <p><code>PATCH http://192.168.1.242:8885/&lt;PATH&gt;</code></p>
 <h3 id='url-parameters-18'>URL Parameters</h3>
 <table><thead>
@@ -2013,7 +2037,7 @@ A successful call will return a <strong>HTTP 204 status code</strong>. An erorr 
     </span><span class="err">...</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-38'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-39'>HTTP Request</h3>
 <p><code>POST http://192.168.1.242:8885/batch</code></p>
 <h3 id='post-data-5'>POST DATA</h3>
 <p>Post Data should be a JSON <strong>array</strong> of <strong>path</strong> fields as returned by calls such as <a href="#get-airings-2">Recordings - Get Airings</a>,<a href="#get-all-channels-2">Recordings - Get Channels</a>, other similar calls, or just a list of paths you&#39;ve collected.</p>
@@ -2054,7 +2078,7 @@ A successful call will return a <strong>HTTP 204 status code</strong>. An erorr 
 <li>A <code>POST</code> request to a specific <strong>watch</strong> URL</li>
 <li>Grabbing the <code>playlist_url</code> returned and passing that to a media player, ffmpeg, or whatever else you want to process the video stream with</li>
 </ol>
-<h3 id='http-request-39'>HTTP Request</h3>
+<h3 id='http-request-40'>HTTP Request</h3>
 <p><code>POST http://192.168.1.242:8885/&lt;PATH&gt;/watch</code></p>
 <h3 id='url-parameters-19'>URL Parameters</h3>
 <table><thead>
