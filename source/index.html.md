@@ -854,12 +854,193 @@ This will return the data for the specific Active Sports Event requested.
 | ------------- | ------------------------------------------- |
 | **object_id** | The **object_id** of the Active Sport Event |
 
-## Schedule an Airing to Record
+# Scheduling Recordings
+
+## Schedule Single Airing to Record
 
 ```shell
-#  curl -X PATCH "http://192.168.1.242:8885/guide/movies/airings/2267295" -d '{"scheduled": true}'
+curl -X PATCH "http://192.168.1.242:8885/guide/movies/airings/2267295" -d '{"scheduled": true}'
 ```
-> The above command will set an airing to be scheduled to record.  Must be used on the airings path.  
+
+> Schedule - returns a typical episode/event/movie/program record with the `schedule` field updated
+
+```json
+{
+  "path": "/guide/series/episodes/2299356",
+  "object_id": 2299356,
+  ...
+  "schedule": {
+    "state": "scheduled",
+    "qualifier": "user",
+    "skip_reason": "none",
+    "offsets": { "start": 0, "end": 0, "source": "none" }
+  }
+}
+```
+
+```shell
+curl -X PATCH "http://192.168.1.242:8885/guide/movies/airings/2267295" -d '{"scheduled": false}'
+```
+
+> Unschedule - returns a typical episode/event/movie/program record with the `schedule` field updated
+
+```json
+{
+  "path": "/guide/series/episodes/2299356",
+  "object_id": 2299356,
+  ...
+  "schedule": {
+    "state": "none",
+    "qualifier": "none",
+    "skip_reason": "none",
+    "offsets": { "start": 0, "end": 0, "source": "none" }
+  }
+}
+```
+
+### HTTP Request
+
+`PATCH http://192.168.1.242:8885/<PATH>`
+
+### URL Parameters
+
+| Parameter | Description                                                                   |
+| --------- | ----------------------------------------------------------------------------- |
+| **PATH**  | The **path** of a current/upcoming airing from [/guide/airings](#get-airings) |
+
+### POST DATA
+
+| Value                    | Description                    |
+| ------------------------ | ------------------------------ |
+| `{ "scheduled": true }`  | Start/set recording of airing  |
+| `{ "scheduled": false }` | Stop/unset recording of airing |
+
+## Schedule Series to Record
+
+```shell
+curl -X PATCH "http://192.168.1.242:8885/guide/series/2281440" -d '{"schedule": "all"}'
+```
+
+> Record ALL episodes, returns a [series](#get-specific-series) with the schedule modified
+
+```json
+{
+  "object_id": 2281440,
+  "path": "/guide/series/2281440",
+  "schedule": {
+    "rule": "all",
+    "channel_path": null,
+    "offsets": { "start": 0, "end": 0, "source": "none" }
+  },
+  "schedule_rule":"all",
+  ...
+}
+```
+
+```shell
+curl -X PATCH "http://192.168.1.242:8885/guide/series/2281440" -d '{"schedule": "new"}'
+```
+
+> Record NEW episodes, returns a [series](#get-specific-series) with the schedule modified
+
+```json
+{
+  "object_id": 2281440,
+  "path": "/guide/series/2281440",
+  "schedule": {
+    "rule": "new",
+    "channel_path": null,
+    "offsets": { "start": 0, "end": 0, "source": "none" }
+  },
+  "schedule_rule": "new",
+  ...
+}
+```
+
+```shell
+curl -X PATCH "http://192.168.1.242:8885/guide/series/2281440" -d '{"schedule": "none"}'
+```
+
+> Record NO episodes, returns a [series](#get-specific-series) with the schedule modified
+
+```json
+{
+  "object_id": 2281440,
+  "path": "/guide/series/2281440",
+  "schedule": {
+    "rule": "none",
+    "channel_path": null,
+    "offsets": { "start": 0, "end": 0, "source": "none" }
+  },
+  "schedule_rule": "none",
+  ...
+}
+```
+
+### HTTP Request
+
+`PATCH http://192.168.1.242:8885/<PATH>`
+
+### URL Parameters
+
+| Parameter | Description                                                                     |
+| --------- | ------------------------------------------------------------------------------- |
+| **PATH**  | The **path** of a series/events/movies/programs from [/guide/shows](#get-shows) |
+
+### POST DATA
+
+| Value                    | Description                     |
+| ------------------------ | ------------------------------- |
+| `{ "schedule": "all" }`  | Record **ALL** matching airings |
+| `{ "schedule": "new" }`  | Record **NEW** matching airings |
+| `{ "schedule": "none" }` | Do not record matching airings  |
+
+## Modify Series Options
+
+```shell
+curl -X PATCH "http://192.168.1.242:8885/guide/series/2281440" -d '{"keep":{"rule":"count","count":1}}'
+```
+
+> As with above, a [series](#get-specific-series) record will be returned with whatever updated changed. This is the one and only example.
+
+```json
+{
+  "object_id": 2281440,
+  "path": "/guide/series/2281440",
+  "schedule": {
+    "rule": "none",
+    "channel_path": null,
+    "offsets": { "start": 0, "end": 0, "source": "none" }
+  },
+  "schedule_rule": "none",
+  "keep": { "rule": "count", "count": 1 }
+}
+```
+
+### HTTP Request
+
+`PATCH http://192.168.1.242:8885/<PATH>`
+
+### URL Parameters
+
+| Parameter | Description                                                                     |
+| --------- | ------------------------------------------------------------------------------- |
+| **PATH**  | The **path** of a series/events/movies/programs from [/guide/shows](#get-shows) |
+
+### POST DATA
+
+As can be seen with the defaults at the bottom, multiple options/rules can be combined.
+
+| Value                                                                                                     | Description                                                                     |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `{"keep":{"rule":"count","count":1}}`                                                                     | Keep Last **count** Recordings (1, 3, 5, 10, 20)                                |
+| `{"keep":{"rule":"all","count":null}}`                                                                    | Keep **all** Recordings                                                         |
+| `{"schedule":{"channel_path":"/guide/channels/975971"}}`                                                  | Limit Recording to a single [Channel](#get-all-channels)                        |
+| `{"schedule":{"channel_path":null}}`                                                                      | Do not limit Channel                                                            |
+| `{"schedule":{"offsets":{"source":"show","start":-120}}}`                                                 | Start recording 2/5/10 minutes early - **start** = (-x \* 60)                   |
+| `{"schedule":{"offsets":{"source":"show","start":0}}}`                                                    | Start recording on time                                                         |
+| `{"schedule":{"offsets":{"source":"show","end":300}}}`                                                    | Delay recording end by 5/15/30/1hr/2hr/3hr minutes early **end** = (x \* 60sec) |
+| `{"schedule": { "channel_path":null, "offsets":{"source":"none"}}, "keep":{"rule":"none", "count":null}}` | Use Defaults                                                                    |
 
 # Recordings
 
