@@ -161,7 +161,7 @@ curl "http://192.168.1.242:8885/server/capabilities"
 }
 ```
 
-This returns information about all hard drives connectded to the Tablo.
+This returns information about all hard drives connected to the Tablo.
 
 ### HTTP Request
 
@@ -244,11 +244,40 @@ curl "http://192.168.1.242:8885/server/harddrives"
 ]
 ```
 
-This returns information about all hard drives connectded to the Tablo.
+This returns information about all hard drives connected to the Tablo.
 
 ### HTTP Request
 
 `GET http://192.168.1.242:8885/server/harddrives`
+
+## Get All Tuners
+
+```shell
+curl "http://192.168.1.242:8885/server/tuners"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "in_use": true,
+    "channel": "/guide/channels/612649",
+    "recording": "/recordings/series/episodes/2297107"
+  },
+  {
+    "in_use": true,
+    "channel": "/guide/channels/612675",
+    "recording": "/recordings/series/episodes/2297099"
+  }
+]
+```
+
+This returns information about all tuners in the Tablo.
+
+### HTTP Request
+
+`GET http://192.168.1.242:8885/server/tuners`
 
 # Settings
 
