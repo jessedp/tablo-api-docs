@@ -36,6 +36,104 @@ There is no Authentication or Authorization required for the publicly availale A
 
 There _is_ a private API used by the Tablo Connect web app (and possibly other official clients) which uses [Meteor](https://www.meteor.com/), but there's no public access to those channels, etc.
 
+# Account
+
+## Subscription
+
+```shell
+curl "http://192.168.1.242:8885/account/subsrciption"
+```
+
+> The above command returns JSON from a fully Subscribed device, structured like this:
+
+```json
+{
+  "services": {
+    "guide_data": { "selected": true, "active": true },
+    "cloud_dvr": null,
+    "deprecated": "use subscriptions[] instead"
+  },
+  "state": "active",
+  "trial": null,
+  "offered_option": null,
+  "registration": {
+    "url": "https://account.tablotv.com/",
+    "identifier": "LD-XXXXXXX"
+  },
+  "subscriptions": [
+    {
+      "kind": "guide",
+      "state": "active",
+      "name": "Guide Data Service",
+      "title": "Guide Data Service",
+      "deprecated": "name, use title",
+      "expires": null,
+      "registration_url": "https://account.tablotv.com/",
+      "registration_identifier": "LD-XXXXXXX",
+      "subtitle": "",
+      "description": "Includes rich TV guide data, one-touch-series recording, and other advanced features.",
+      "actions": [],
+      "warnings": []
+    },
+    {
+      "kind": "comskip",
+      "state": "active",
+      "name": "Yearly Premium Service",
+      "title": "Yearly Premium Service",
+      "deprecated": "name, use title",
+      "expires": "2023-02-07T17:10Z",
+      "registration_url": "https://account.tablotv.com/",
+      "registration_identifier": "LD-XXXXXXX",
+      "subtitle": "",
+      "description": "Additional features to enhance your Over-the-Air viewing experience.",
+      "actions": [],
+      "warnings": []
+    }
+  ]
+}
+```
+
+> Another device with no/fewer subscriptions may return JSON structured like this:
+
+```json
+{
+  "services": {
+    "guide_data": { "selected": true, "active": false },
+    "cloud_dvr": null,
+    "deprecated": "use subscriptions[] instead"
+  },
+  "state": "expired",
+  "trial": null,
+  "offered_option": null,
+  "registration": {
+    "url": "https://account.tablotv.com/",
+    "identifier": "GI-XXXXXXXXX"
+  },
+  "subscriptions": [
+    {
+      "kind": "guide",
+      "state": "expired",
+      "name": "Guide Data Service",
+      "title": "Guide Data Service",
+      "deprecated": "name, use title",
+      "expires": null,
+      "registration_url": "https://account.tablotv.com/",
+      "registration_identifier": "GI-XXXXXXXXX",
+      "subtitle": "",
+      "description": "Includes rich TV guide data, one-touch-series recording, and other advanced features.",
+      "actions": [],
+      "warnings": []
+    }
+  ]
+}
+```
+
+Returns information about Tablo services you've enabled and/or subscribed to.
+
+### HTTP Request
+
+`GET http://192.168.1.242:8885/account/subscription`
+
 # Network Options
 
 ## Discovery
