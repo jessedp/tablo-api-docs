@@ -521,11 +521,12 @@ This endpoint retrieves a `path` to ANY shows matching the query parameters that
 
 `GET http://192.168.1.242:8885/guide/shows`
 
-### URL Parameters
+### URL Parameters _(all optional)_
 
-| Parameter | Description                                                               |
-| --------- | ------------------------------------------------------------------------- |
-| qualifier | A _qualifier_ to limit the items returned. Known: **premiering**, **new** |
+| Parameter | Description                                                                              |
+| --------- | ---------------------------------------------------------------------------------------- |
+| qualifier | A _qualifier_ to limit the items returned. Known: **premiering**, **new**, **primetime** |
+| state     | A _state_ to limit the items returned. Known: **conflicted**, **scheduled**              |
 
 The **qualifier** parameter only limits the list returned - there is no change in the output data shape.
 
