@@ -1007,6 +1007,12 @@ This will return `paths` for all `sports` registerered on the device. The exampl
 
 `GET http://192.168.1.242:8885/guide/sports`
 
+### URL Parameters _(all optional)_
+
+| Parameter   | Description                                                               |
+| ----------- | ------------------------------------------------------------------------- |
+| **channel** | The **object_id** of a [Channel](#get-specific-channel) to limit Shows to |
+
 ## Get Specific Sport
 
 ```shell
