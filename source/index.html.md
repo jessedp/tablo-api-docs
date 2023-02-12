@@ -526,6 +526,12 @@ This endpoint retrieves a `path` to every Airing avaiable - for additional infor
 
 `GET http://192.168.1.242:8885/guide/airings`
 
+### URL Parameters _(all optional)_
+
+| Parameter | Description                                                                 |
+| --------- | --------------------------------------------------------------------------- |
+| **state** | A _state_ to limit the items returned. Known: **conflicted**, **scheduled** |
+
 ## Get Shows
 
 ```shell
@@ -591,6 +597,12 @@ This will return `paths` for all `channels` registerered on the device. The exam
 ### HTTP Request
 
 `GET http://192.168.1.242:8885/guide/channels`
+
+### URL Parameters _(all optional)_
+
+| Parameter | Description                                                                 |
+| --------- | --------------------------------------------------------------------------- |
+| **state** | A _state_ to limit the items returned. Known: **conflicted**, **scheduled** |
 
 ## Get Specific Channel
 
@@ -659,6 +671,7 @@ This will return `paths` for all `movies` registerered on the device matching an
 
 | Parameter     | Description                                                                  |
 | ------------- | ---------------------------------------------------------------------------- |
+| **state**     | A _state_ to limit the items returned. Known: **conflicted**, **scheduled**  |
 | **channel**   | The **object_id** of a [Channel](#get-specific-channel) to limit movies from |
 | **minrating** | The minimum rating (2,4,6,8,10) of Movies to include                         |
 | **maxrating** | The maximum rating (2,4,6,8,10) of Movies to include                         |
@@ -744,6 +757,7 @@ This will return `paths` for all `series` registerered on the device. The exampl
 
 | Parameter     | Description                                                                       |
 | ------------- | --------------------------------------------------------------------------------- |
+| **state**     | A _state_ to limit the items returned. Known: **conflicted**, **scheduled**       |
 | **channel**   | The **object_id** of a [Channel](#get-specific-channel) to limit Series to        |
 | **qualifier** | Limit to certain "types" of series. Known: **new**, **primetime**, **premiering** |
 
@@ -1039,9 +1053,10 @@ This will return `paths` for all `sports` registerered on the device. The exampl
 
 ### URL Parameters _(all optional)_
 
-| Parameter   | Description                                                               |
-| ----------- | ------------------------------------------------------------------------- |
-| **channel** | The **object_id** of a [Channel](#get-specific-channel) to limit Shows to |
+| Parameter   | Description                                                                 |
+| ----------- | --------------------------------------------------------------------------- |
+| **state**   | A _state_ to limit the items returned. Known: **conflicted**, **scheduled** |
+| **channel** | The **object_id** of a [Channel](#get-specific-channel) to limit Shows to   |
 
 ## Get Specific Sport
 
