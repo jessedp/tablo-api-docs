@@ -626,12 +626,12 @@ This will return `paths` for all `movies` registerered on the device matching an
 
 ### URL Parameters _(all optional)_
 
-| Parameter     | Description                                                              |
-| ------------- | ------------------------------------------------------------------------ |
-| **channel**   | The **object_id** of a [Channel](#get-all-channels) to limit movies from |
-| **minrating** | The minimum rating (2,4,6,8,10) of Movies to include                     |
-| **maxrating** | The maximum rating (2,4,6,8,10) of Movies to include                     |
-| **unrated**   | true/false - whether to include movies without ratings                   |
+| Parameter     | Description                                                                  |
+| ------------- | ---------------------------------------------------------------------------- |
+| **channel**   | The **object_id** of a [Channel](#get-specific-channel) to limit movies from |
+| **minrating** | The minimum rating (2,4,6,8,10) of Movies to include                         |
+| **maxrating** | The maximum rating (2,4,6,8,10) of Movies to include                         |
+| **unrated**   | true/false - whether to include movies without ratings                       |
 
 ## Get Specific Movie
 
@@ -708,6 +708,13 @@ This will return `paths` for all `series` registerered on the device. The exampl
 ### HTTP Request
 
 `GET http://192.168.1.242:8885/guide/series`
+
+### URL Parameters _(all optional)_
+
+| Parameter     | Description                                                                       |
+| ------------- | --------------------------------------------------------------------------------- |
+| **channel**   | The **object_id** of a [Channel](#get-specific-channel) to limit Series to        |
+| **qualifier** | Limit to certain "types" of series. Known: **new**, **primetime**, **premiering** |
 
 ## Get Specific Series
 
