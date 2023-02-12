@@ -429,11 +429,23 @@ curl "http://192.168.1.242:8885/settings/recording_qualities"
 ]
 ```
 
-This returns the recording quality options supported by the device.
+This returns the recording quality options supported by the device. Currently all 3 of these HTTP requests seem to return the same data.
 
-### HTTP Request
+### HTTP Request (general options)
 
 `GET http://192.168.1.242:8885/settings/recording_qualities`
+
+### HTTP Request (live options)
+
+Quality for Live TV in case they differ
+
+`GET http://192.168.1.242:8885/settings/recording_qualities/live`
+
+### HTTP Request (recording options)
+
+Quality for Recordings in case they differ
+
+`GET http://192.168.1.242:8885/settings/recording_qualities/recording`
 
 ## Get Specific Recording Quality info
 
