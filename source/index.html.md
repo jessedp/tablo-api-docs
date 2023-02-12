@@ -695,7 +695,7 @@ curl "http://192.168.1.242:8885/guide/series"
 
 ```json
 [
-  "/guide/series/2100779",
+  "/guide/series/8055",
   "/guide/series/631734",
   "/guide/series/631686",
   "/guide/series/2272366",
@@ -719,15 +719,15 @@ This will return `paths` for all `series` registerered on the device. The exampl
 ## Get Specific Series
 
 ```shell
-curl "http://192.168.1.242:8885/guide/series/2100779"
+curl "http://192.168.1.242:8885/guide/series/8055"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "object_id": 2100779,
-  "path": "/guide/series/2100779",
+  "object_id": 8055,
+  "path": "/guide/series/8055",
   "schedule": {
     "rule": "new",
     "channel_path": null,
@@ -735,53 +735,50 @@ curl "http://192.168.1.242:8885/guide/series/2100779"
   },
   "schedule_rule": "new",
   "series": {
-    "title": "Abbott Elementary",
+    "title": "American Housewife",
     "genres": ["Sitcom"],
-    "description": "A group of dedicated, passionate teachers — and a slightly tone-deaf principal — find themselves thrown together in a Philadelphia public school where, despite the odds stacked against them, they are determined to help their students succeed in life. Though these incredible public servants may be outnumbered and underfunded, they love what they do — even if they don't love the school district's less-than-stellar attitude toward educating children.",
-    "orig_air_date": "2021-12-07",
+    "description": "The wealthy town of Westport, Conn., is full of cookie-cutter mommies and their seemingly perfect offspring, but the members of the Otto family can't be counted among them. Confident housewife Katie Otto shares a home with her husband, Jeff, and their three children Taylor, Harrison and Anna-Kat, and while she loves them all dearly, she recognizes they probably aren't going to land themselves in a magazine spread anytime soon. The matriarch knows her family is beautifully flawed, and she's far from sorry.",
+    "orig_air_date": "2016-10-11",
     "episode_runtime": 1800,
     "series_rating": "tvpg",
     "cast": [
-      "Quinta Brunson",
-      "Tyler James Williams",
-      "Janelle James",
-      "Chris Perfetti",
-      "Lisa Ann Walter",
-      "Sheryl Lee Ralph",
-      "William Stanford Davis"
+      "Katy Mixon",
+      "Diedrich Bader",
+      "Meg Donnelly",
+      "Daniel DiMaggio",
+      "Giselle Eisenberg",
+      "Ali Wong",
+      "Julia Butters",
+      "Carly Hughes"
     ],
-    "awards": [
-      {
-        "won": true,
-        "name": "Emmy (Primetime)",
-        "category": "Outstanding Supporting Actress in a Comedy Series",
-        "year": 2022,
-        "nominee": "Sheryl Lee Ralph"
-      },
-      {
-        "won": true,
-        "name": "Emmy (Primetime)",
-        "category": "Outstanding Writing for a Comedy Series",
-        "year": 2022
-      }
-    ],
-    "background_image": { "image_id": 2265261, "has_title": false },
-    "cover_image": { "image_id": 2265260, "has_title": true },
-    "thumbnail_image": { "image_id": 2265259, "has_title": true }
+    "awards": [],
+    "background_image": { "image_id": 2162129, "has_title": false },
+    "cover_image": { "image_id": 2162128, "has_title": true },
+    "thumbnail_image": { "image_id": 2162127, "has_title": true }
   },
   "show_counts": {
-    "airing_count": 3,
+    "airing_count": 22,
     "conflicted_count": 0,
-    "scheduled_count": 2
+    "scheduled_count": 0
   },
   "keep": { "rule": "none", "count": null },
-  "recordings_path": "/recordings/series/2183172"
+  "recordings_path": null
 }
 ```
 
-This will return all data for the Series `path` requested.
+This will return all data for the Series `path` requested. Note that both of these HTTP Request examples are equivalent.
 
-### HTTP Request
+### HTTP Request (definition A)
+
+`GET http://192.168.1.242:8885/<PATH>`
+
+### URL Parameters
+
+| Parameter | Description                                        |
+| --------- | -------------------------------------------------- |
+| **PATH**  | A **PATH** returned from [Series](#get-all-series) |
+
+### HTTP Request (definition B)
 
 `GET http://192.168.1.242:8885/guide/series/<object_id>`
 
@@ -791,7 +788,136 @@ This will return all data for the Series `path` requested.
 | ------------- | ------------------------------- |
 | **object_id** | The **object_id** of the Series |
 
-## Get Active Series Episode
+## Get All Seasons of a Series
+
+```shell
+curl "http://192.168.1.242:8885/guide/series/8055/seasons"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  "/guide/series/seasons/2313583",
+  "/guide/series/seasons/2300519",
+  "/guide/series/seasons/2307848"
+]
+```
+
+This will return the _paths_ for all Seasons in the Series `path` requested. Note that both of these HTTP Request examples are equivalent.
+
+### HTTP Request (definition A)
+
+`GET http://192.168.1.242:8885/<PATH>/seasons`
+
+### URL Parameters
+
+| Parameter | Description                                        |
+| --------- | -------------------------------------------------- |
+| **PATH**  | A **PATH** returned from [Series](#get-all-series) |
+
+### HTTP Request (definition B)
+
+`GET http://192.168.1.242:8885/guide/series/<object_id>/seasons`
+
+### URL Parameters
+
+| Parameter     | Description                     |
+| ------------- | ------------------------------- |
+| **object_id** | The **object_id** of the Series |
+
+## Get Specific Season of a Series
+
+```shell
+curl "http://192.168.1.242:8885/guide/series/seasons/2313583"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "object_id": 2313583,
+  "path": "/guide/series/seasons/2313583",
+  "series_path": "/guide/series/8055",
+  "season": { "number": 4, "name": "4" },
+  "season_counts": {
+    "airing_count": 0,
+    "conflicted_count": 0,
+    "scheduled_count": 0
+  }
+}
+```
+
+This returns data about the requested Season path. As of firmware v2.2.42, the `season_counts` seem to be wrong (always 0).
+
+### HTTP Request
+
+`GET http://192.168.1.242:8885/<PATH>`
+
+### URL Parameters
+
+| Parameter | Description                                                                     |
+| --------- | ------------------------------------------------------------------------------- |
+| **PATH**  | A **PATH** returned from [All Season of a Series](#get-all-seasons-of-a-series) |
+
+## Get All Episodes of a Series
+
+```shell
+curl "http://192.168.1.242:8885/guide/series/8055/episodes"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  "/guide/series/episodes/2307849",
+  "/guide/series/episodes/2306985",
+  "/guide/series/episodes/2306986",
+  "/guide/series/episodes/2307850",
+  "/guide/series/episodes/2309019",
+  "/guide/series/episodes/2309020",
+  "/guide/series/episodes/2309847",
+  "/guide/series/episodes/2309848",
+  "/guide/series/episodes/2310725",
+  "/guide/series/episodes/2310726",
+  "/guide/series/episodes/2311929",
+  "/guide/series/episodes/2311930",
+  "/guide/series/episodes/2313584",
+  "/guide/series/episodes/2313585",
+  "/guide/series/episodes/2314504",
+  "/guide/series/episodes/2314505",
+  "/guide/series/episodes/2315431",
+  "/guide/series/episodes/2315432",
+  "/guide/series/episodes/2316308",
+  "/guide/series/episodes/2316309",
+  "/guide/series/episodes/2317379",
+  "/guide/series/episodes/2317380"
+]
+```
+
+This will return the _paths_ for all Episodes in the Series `path` requested. Note that both of these HTTP Request examples are equivalent.
+
+### HTTP Request (definition A)
+
+`GET http://192.168.1.242:8885/<PATH>/episodes`
+
+### URL Parameters
+
+| Parameter | Description                                        |
+| --------- | -------------------------------------------------- |
+| **PATH**  | A **PATH** returned from [Series](#get-all-series) |
+
+### HTTP Request (definition B)
+
+`GET http://192.168.1.242:8885/guide/series/<object_id>/episodes`
+
+### URL Parameters
+
+| Parameter     | Description                     |
+| ------------- | ------------------------------- |
+| **object_id** | The **object_id** of the Series |
+
+## Get Specfic Episode of a Series
 
 ```shell
 curl "http://192.168.1.242:8885/guide/series/episodes/2272260"
@@ -844,17 +970,17 @@ curl "http://192.168.1.242:8885/guide/series/episodes/2272260"
 }
 ```
 
-This will return all data for the Active Series Episode requested.
+This will return all data for an available Series Episode requested.
 
 ### HTTP Request
 
-`GET http://192.168.1.242:8885/guide/series/episodes/<object_id>`
+`GET http://192.168.1.242:8885/guide/<PATH>`
 
 ### URL Parameters
 
-| Parameter     | Description                     |
-| ------------- | ------------------------------- |
-| **object_id** | The **object_id** of the Series |
+| Parameter | Description                                                                                |
+| --------- | ------------------------------------------------------------------------------------------ |
+| **PATH**  | A **path** returned from [getting all Episodes of a Series](#get-all-episodes-of-a-series) |
 
 ## Get All Sports
 
