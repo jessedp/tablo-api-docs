@@ -377,6 +377,24 @@ This returns information about all tuners in the Tablo.
 
 `GET http://192.168.1.242:8885/server/tuners`
 
+## Get Storage Info
+
+```shell
+curl "http://192.168.1.242:8885/storage/info"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{ "supported_kinds": ["external", "internal"] }
+```
+
+Gets info about supported storage options.
+
+### HTTP Request
+
+`GET http://192.168.1.242:8885/storage/info`
+
 # Settings
 
 Methods to gather information about some basic server setttings
