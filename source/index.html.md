@@ -618,11 +618,20 @@ curl "http://192.168.1.242:8885/guide/movies"
 ]
 ```
 
-This will return `paths` for all `movies` registerered on the device. The example is truncated on purpose.
+This will return `paths` for all `movies` registerered on the device matching any `parameters` passed. The example is truncated on purpose.
 
 ### HTTP Request
 
 `GET http://192.168.1.242:8885/guide/movies`
+
+### URL Parameters _(all optional)_
+
+| Parameter     | Description                                                              |
+| ------------- | ------------------------------------------------------------------------ |
+| **channel**   | The **object_id** of a [Channel](#get-all-channels) to limit movies from |
+| **minrating** | The minimum rating (2,4,6,8,10) of Movies to include                     |
+| **maxrating** | The maximum rating (2,4,6,8,10) of Movies to include                     |
+| **unrated**   | true/false - whether to include movies without ratings                   |
 
 ## Get Specific Movie
 
